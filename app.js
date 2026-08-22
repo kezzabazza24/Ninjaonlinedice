@@ -94,7 +94,13 @@ rollBtn.onclick=async()=>{
 };
 
 document.querySelector("#copyBtn").onclick=()=>navigator.clipboard.writeText(document.querySelector("#code").textContent);
-document.querySelector("#privacyToggle").onchange=e=>document.querySelector("#privacy").classList.toggle("on",e.target.checked);
+document.querySelector("#privacyToggle").onchange=e=>{
+  const enabled=e.target.checked;
+  const privacy=document.querySelector("#privacy");
+  const wrap=document.querySelector(".dice-wrap");
+  privacy.classList.toggle("on",enabled);
+  wrap.classList.toggle("privacy-active",enabled);
+};
 
 const channel=db.channel("presence",{config:{presence:{key:crypto.randomUUID()}}});
 channel.on("presence",{event:"sync"},()=>{
