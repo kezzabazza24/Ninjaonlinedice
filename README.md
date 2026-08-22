@@ -21,3 +21,7 @@ Security note: the included public insert policy is suitable for testing, but fo
 3. Add your user's UUID to `admin_users` using the commented SQL in that file.
 4. Upload `admin.html` and `admin.js` to GitHub.
 5. The included Edge Function source is the next step for server-side roll creation; do not put a service-role key into GitHub or browser JavaScript.
+
+
+## VIP Page
+Added `vip.html` and `vip.js` for The RuleBreaker VIP design. For secure VIP login, create a Supabase Auth user and use `admin_users`/role checks rather than storing a password in browser JavaScript.

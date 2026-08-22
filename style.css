@@ -32,3 +32,19 @@
 .live-clock{position:relative;z-index:3;display:inline-flex;align-items:center;gap:12px;margin:8px auto 10px;padding:9px 18px;border:1px solid #ff3b3b;border-radius:10px;background:#080b15;box-shadow:0 0 18px #ff303044}
 .clock-label{font-size:11px;font-weight:bold;letter-spacing:1.5px;color:#aeb8c8}
 #liveClock{font-size:22px;letter-spacing:2px;color:#fff;font-variant-numeric:tabular-nums;text-shadow:0 0 12px #fff6}
+
+.vip-body{background:radial-gradient(circle at 50% 0,#5b3b00 0,transparent 28%),radial-gradient(circle at 15% 40%,#4a0070 0,transparent 32%),#09040f;overflow-x:hidden}
+.vip-page{max-width:1000px;margin:auto;text-align:center;padding:45px 20px 70px;position:relative}
+.vip-crown{font-size:70px;filter:drop-shadow(0 0 20px #ffd700);animation:crownPulse 1.6s ease-in-out infinite}
+.vip-badge{display:inline-block;border:1px solid #ffd700;color:#ffe680;background:#251b00;padding:9px 20px;border-radius:30px;font-size:12px;font-weight:bold;letter-spacing:3px}
+.vip-page h1{font-size:clamp(48px,9vw,100px);font-style:italic;margin:15px 0 0;text-shadow:0 0 30px #9f45ff}.vip-page h1 span{color:#ffd700;text-shadow:0 0 22px #ffd700}
+.vip-sub{letter-spacing:5px;color:#d6b6ff;font-weight:bold}.vip-line{height:2px;max-width:650px;margin:24px auto;background:linear-gradient(90deg,transparent,#ffd700,#b54cff,#ffd700,transparent)}
+.vip-dice-card{margin:30px auto;padding:35px 20px;border:1px solid #ffd700;border-radius:22px;background:linear-gradient(145deg,#180d23dd,#09040fdd);box-shadow:0 0 35px #ffd70033,0 0 70px #a63dff22}
+.vip-label{color:#ffd700;font-weight:bold;letter-spacing:3px;margin-bottom:24px}
+.vip-dice-card #vipRollBtn{margin-top:30px;background:linear-gradient(135deg,#7b22b5,#24004b);border:1px solid #ffd700;color:#fff;padding:17px 34px;border-radius:10px;font-size:18px;font-weight:bold;cursor:pointer;box-shadow:0 0 24px #a63dff88}
+.vip-code{margin-top:25px}.vip-code small{display:block;color:#d8b8ff;margin-bottom:8px}.vip-code code{color:#ffd700;font-size:20px;word-break:break-word}
+.vip-info{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:25px}.vip-info div{border:1px solid #63318a;background:#120a1d;padding:20px;border-radius:14px}.vip-info b{display:block;color:#ffd700;margin-bottom:8px}.vip-info span{font-size:13px;color:#e8d7ff}
+.vip-open{display:inline-block;background:#5b168d;border:1px solid #ffd700;color:#fff;text-decoration:none;padding:13px 22px;border-radius:8px;font-weight:bold}
+.vip-admin-card{border-color:#ffd700}
+@keyframes crownPulse{50%{transform:scale(1.12);filter:drop-shadow(0 0 35px #ffd700)}}
+@media(max-width:650px){.vip-info{grid-template-columns:1fr}.vip-page{padding-top:30px}}
