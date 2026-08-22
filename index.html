@@ -40,7 +40,14 @@
   <div class="dice-zone-label">⚡ LIVE COLOUR ARENA ⚡</div><div id="diceStage" class="dice-stage"></div>
   <div id="privacy" class="privacy"><div>🥷<strong>PRIVACY MODE</strong><small>Dice hidden on this screen</small></div></div>
 </div>
-<div class="controls"><label><input id="privacyToggle" type="checkbox"> 🔒 PRIVACY / BLUR MODE</label><span class="players">● <b id="activePlayers">—</b> ACTIVE PLAYERS</span></div>
+<div class="controls game-controls"><label><input id="privacyToggle" type="checkbox"> 🔒 PRIVACY / BLUR MODE</label><span class="players">● <b id="activePlayers">—</b> ACTIVE PLAYERS</span></div>
+<div class="pick-counter" aria-label="Correct pick counter">
+  <span class="counter-label">🎯 PICK SCORE</span>
+  <button id="scoreMinus" class="counter-btn minus" type="button" aria-label="Subtract one">−</button>
+  <output id="scoreValue" aria-live="polite">0</output>
+  <button id="scorePlus" class="counter-btn plus" type="button" aria-label="Add one">+</button>
+  <button id="scoreReset" class="counter-reset" type="button">RESET</button>
+</div>
 <button id="rollBtn">⚡ ROLL 4 DICE ⚡</button><div id="rollStatus"></div></section>
 <section class="verification-panel" aria-live="polite">
   <div class="verification-copy">

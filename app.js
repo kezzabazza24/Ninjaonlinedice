@@ -155,3 +155,22 @@ if(liveClock){
   updateClock();
   setInterval(updateClock,1000);
 }
+
+// Personal pick counter — stored locally so each player can track whether they are up or down.
+const scoreValue=document.querySelector("#scoreValue");
+const scorePlus=document.querySelector("#scorePlus");
+const scoreMinus=document.querySelector("#scoreMinus");
+const scoreReset=document.querySelector("#scoreReset");
+let pickScore=Number(localStorage.getItem("ninjaPickScore")||0);
+if(!Number.isFinite(pickScore)) pickScore=0;
+function updatePickScore(){
+  scoreValue.textContent=pickScore>0?`+${pickScore}`:pickScore;
+  scoreValue.classList.toggle("positive",pickScore>0);
+  scoreValue.classList.toggle("negative",pickScore<0);
+  scoreValue.classList.toggle("neutral",pickScore===0);
+  localStorage.setItem("ninjaPickScore",String(pickScore));
+}
+scorePlus?.addEventListener("click",()=>{pickScore++;updatePickScore()});
+scoreMinus?.addEventListener("click",()=>{pickScore--;updatePickScore()});
+scoreReset?.addEventListener("click",()=>{pickScore=0;updatePickScore()});
+updatePickScore();
