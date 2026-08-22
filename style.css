@@ -48,3 +48,28 @@
 .vip-admin-card{border-color:#ffd700}
 @keyframes crownPulse{50%{transform:scale(1.12);filter:drop-shadow(0 0 35px #ffd700)}}
 @media(max-width:650px){.vip-info{grid-template-columns:1fr}.vip-page{padding-top:30px}}
+
+.vip-login-card{max-width:580px;margin:35px auto;padding:35px 25px;border:1px solid #ffd700;border-radius:22px;background:linear-gradient(145deg,#180d23ee,#09040fee);box-shadow:0 0 35px #ffd70033,0 0 70px #a63dff22}
+.vip-login-card input{display:block;width:100%;margin:12px 0;padding:16px;background:#07030c;border:1px solid #8054a3;border-radius:9px;color:#fff;font-size:16px}
+.vip-login-card button{margin-top:8px}
+.vip-logout{margin:8px;background:#190b22!important;border-color:#ffd700!important;font-size:12px!important;padding:9px 16px!important}
+
+/* Layout refresh: friendlier logo, centred dice, clock in top corner */
+header{position:relative;padding-right:150px}
+.friendly-brand{display:flex!important;align-items:center!important;gap:10px;text-decoration:none;line-height:1}
+.friendly-brand .brand-ninja{font-size:34px;filter:drop-shadow(0 0 9px rgba(157,80,255,.8))}
+.friendly-brand strong{display:block;font-size:25px;letter-spacing:.5px;color:#fff;text-shadow:0 0 13px rgba(157,80,255,.8)}
+.friendly-brand em{display:block;margin-top:3px;font-style:normal;font-size:13px;letter-spacing:2.4px;color:#ffd84a;text-shadow:0 0 10px rgba(255,216,74,.6)}
+.live-clock{position:fixed!important;top:12px!important;right:16px!important;z-index:999!important;margin:0!important;display:flex!important;align-items:center!important;gap:8px!important;padding:7px 12px!important;border:1px solid rgba(255,216,74,.9)!important;border-radius:12px!important;background:rgba(8,11,21,.9)!important;box-shadow:0 0 18px rgba(255,216,74,.2)!important;backdrop-filter:blur(8px)}
+.clock-label{font-size:9px!important;letter-spacing:1.2px!important;color:#d7c67a!important}
+#liveClock{font-size:18px!important;letter-spacing:1.5px!important;color:#fff!important}
+#diceStage,.dice-stage{width:100%;display:flex!important;justify-content:center!important;align-items:center!important;gap:18px!important;margin-left:auto!important;margin-right:auto!important}
+.dice-area,.roller,.roll-area{display:flex;flex-direction:column;align-items:center;justify-content:center}
+@media(max-width:700px){
+ header{padding-right:0;padding-top:56px}
+ .live-clock{top:8px!important;right:10px!important}
+ .friendly-brand{justify-content:center}
+ .friendly-brand .brand-ninja{font-size:30px}
+ .friendly-brand strong{font-size:22px}
+ #diceStage,.dice-stage{gap:10px!important}
+}

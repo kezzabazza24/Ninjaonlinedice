@@ -3,15 +3,21 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>VIP | The RuleBreaker | Ninja Online Dice</title><link rel="stylesheet" href="style.css">
 </head><body class="vip-body">
-<header><a class="brand" href="index.html">🥷 <b>NINJA</b> ONLINE DICE</a>
-<nav><a href="index.html">HOME</a><a href="verify.html">VERIFY ROLL</a></nav></header>
+<header><a class="brand" href="index.html">🥷 <b>NINJA</b> ONLINE DICE</a><nav><a href="index.html">HOME</a><a href="verify.html">VERIFY ROLL</a></nav></header>
 <main class="vip-page">
-  <div class="vip-crown">👑</div>
-  <div class="vip-badge">EXCLUSIVE VIP ACCESS</div>
-  <h1>THE <span>RULEBREAKER</span></h1>
-  <p class="vip-sub">OFFICIAL VIP NINJA DICE ARENA</p>
-  <div class="vip-line"></div>
+<section id="vipLoginPanel" class="vip-login-card">
+  <div class="vip-crown">👑</div><div class="vip-badge">VIP ACCESS ONLY</div>
+  <h1>THE <span>RULEBREAKER</span></h1><p class="vip-sub">ENTER VIP CREDENTIALS</p>
+  <input id="vipEmail" type="email" placeholder="VIP email" autocomplete="email">
+  <input id="vipPassword" type="password" placeholder="VIP password" autocomplete="current-password">
+  <button id="vipLoginBtn">👑 ENTER VIP ARENA 👑</button>
+  <p id="vipLoginMessage"></p>
+</section>
 
+<section id="vipArena" class="hidden">
+  <div class="vip-crown">👑</div><div class="vip-badge">EXCLUSIVE VIP ACCESS</div>
+  <h1>THE <span>RULEBREAKER</span></h1><p class="vip-sub">OFFICIAL VIP NINJA DICE ARENA</p>
+  <button id="vipLogoutBtn" class="vip-logout">LOG OUT</button><div class="vip-line"></div>
   <section class="vip-dice-card">
     <div class="vip-label">🔥 VIP 4 COLOUR ROLL 🔥</div>
     <div id="vipDiceStage" class="dice-stage"></div>
@@ -19,12 +25,10 @@
     <div id="vipStatus"></div>
     <div class="vip-code"><small>VIP VERIFICATION CODE</small><code id="vipCode">ROLL TO GENERATE</code></div>
   </section>
-
   <section class="vip-info">
     <div><b>👑 VIP STATUS</b><span>THE RULEBREAKER</span></div>
     <div><b>🥷 NINJA VERIFIED</b><span>EXCLUSIVE ACCESS</span></div>
     <div><b>⚡ LIVE ROLLS</b><span>100% RANDOM</span></div>
   </section>
-</main>
-<script type="module" src="vip.js"></script>
-</body></html>
+</section>
+</main><script type="module" src="vip.js"></script></body></html>
