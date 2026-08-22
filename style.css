@@ -1,1 +1,34 @@
 :root{--red:#ff3030;--bg:#070a14;--panel:#0d1220}*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 70% 0,#24105b,transparent 30%),radial-gradient(circle at 15% 25%,#401016,transparent 32%),var(--bg);color:#f5f7ff;font-family:Arial,sans-serif;min-height:100vh}header{min-height:82px;background:#03050b;border-bottom:1px solid #303849;display:flex;align-items:center;justify-content:space-between;padding:15px 5%;gap:20px}.brand{color:white;text-decoration:none;font-size:22px;font-weight:bold}.brand b{font-size:29px}nav{display:flex;gap:24px}nav a{color:#d5d9e4;text-decoration:none;font-weight:bold}.active,nav a:hover{color:var(--red)}.hero{text-align:center;padding:55px 20px;position:relative;overflow:hidden}.ghost{position:absolute;left:5%;bottom:-80px;font-size:340px;opacity:.12}.hero h1{font-size:clamp(48px,9vw,95px);margin:0;font-style:italic}.hero h1 span{color:var(--red);display:block;font-size:.56em}.hero h2 i{color:#ffff18}.dice-wrap{position:relative;display:inline-block;padding:12px;margin:15px}.dice-stage{display:flex;gap:30px;justify-content:center}.die{width:82px;height:82px;border-radius:25%;transform:rotate(30deg);box-shadow:inset 10px 10px 15px #ffffff55,inset -16px -16px 20px #0009,0 0 24px currentColor}.red{background:linear-gradient(135deg,#ff655b,#970000);color:#ff3333}.blue{background:linear-gradient(135deg,#59bfff,#074394);color:#20aaff}.green{background:linear-gradient(135deg,#6cff77,#08722b);color:#45f56a}.yellow{background:linear-gradient(135deg,#ffffc0,#d6d400);color:#ffff20}.orange{background:linear-gradient(135deg,#ffb052,#bb3900);color:#ff7d20}.purple{background:linear-gradient(135deg,#db7dff,#68068e);color:#ce52ff}.privacy{display:none;position:absolute;inset:0;backdrop-filter:blur(18px);background:#050814aa;border:1px solid var(--red);border-radius:16px;align-items:center;justify-content:center}.privacy div{display:flex;flex-direction:column;font-size:40px}.privacy strong{font-size:20px}.privacy small{font-size:12px}.privacy.on{display:flex}.controls{display:flex;gap:20px;justify-content:center;align-items:center;margin:8px}.players{border:1px solid #45f583;padding:9px 14px;border-radius:20px;color:#6dff99;background:#07140d}.hero button,.verify-form button,#copyBtn{background:#16070b;color:white;border:1px solid var(--red);box-shadow:0 0 20px #ff303055;border-radius:8px;padding:16px 35px;font-weight:bold;font-size:18px;cursor:pointer}.verifybox,.history,.verify-form,.verify-result{max-width:950px;margin:25px auto;padding:24px;border:1px solid #343e50;background:var(--panel);border-radius:12px;text-align:center}.verifybox code{display:inline-block;padding:15px;margin:8px;color:#ff6060;font-size:24px;border:1px dashed #ff5555}.history-item{display:grid;grid-template-columns:80px 1fr 180px;align-items:center;padding:12px;border-bottom:1px solid #283144;text-align:left}.dots{display:flex;gap:8px}.dot{width:24px;height:24px;border-radius:6px;box-shadow:0 0 12px currentColor}.verify-page{text-align:center;padding:70px 20px}.verify-form{display:flex;gap:10px;justify-content:center}.verify-form input{background:#050914;color:white;border:1px solid #596278;padding:16px;font-size:18px;border-radius:8px;text-transform:uppercase}.verified{border-color:#49e86e!important}.invalid{border-color:#ff3333!important}.result-dice{display:flex;justify-content:center;gap:18px;margin:20px}.result-dice .die{width:70px;height:70px}@media(max-width:650px){header{flex-direction:column}.dice-stage{gap:14px}.die{width:58px;height:58px}.history-item{grid-template-columns:55px 1fr}.history-item time{display:none}.verify-form{flex-direction:column}.verify-form input{width:100%}}
+.hidden{display:none!important}
+.admin-page{max-width:1100px;margin:0 auto;padding:50px 20px}
+.admin-card{background:#0b101c;border:1px solid #34405a;border-radius:14px;padding:28px;margin-bottom:18px;box-shadow:0 0 25px #0004}
+.admin-card input{display:block;width:100%;max-width:520px;margin:12px auto;padding:15px;background:#050914;border:1px solid #4b566b;color:#fff;border-radius:8px;font-size:16px}
+.admin-card button,.admin-top button{background:#18070a;border:1px solid #ff3b3b;color:#fff;padding:13px 24px;border-radius:8px;font-weight:bold;cursor:pointer}
+.admin-top{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-bottom:20px}
+.admin-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:18px}
+.admin-stats article{background:#0b101c;border:1px solid #34405a;border-radius:12px;padding:20px}
+.admin-stats small{display:block;color:#aeb8c8}.admin-stats b{display:block;font-size:34px;color:#ff5b5b;margin-top:8px}
+.admin-roll{display:grid;grid-template-columns:1.4fr 1fr 1.3fr;gap:12px;padding:12px;border-bottom:1px solid #263044}
+.admin-roll code{color:#ff7777}.admin-roll span{color:#d8deea}.admin-roll time{color:#aeb7c5;font-size:13px}
+.setting-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid #263044}
+.muted{color:#9faabd;font-size:14px}
+@media(max-width:650px){.admin-stats{grid-template-columns:1fr}.admin-roll{grid-template-columns:1fr}.admin-top{align-items:flex-start;flex-direction:column}}
+
+/* 1-second dice roll animation */
+.dice-stage.is-rolling{filter:drop-shadow(0 0 16px rgba(255,255,255,.22))}
+.die.rolling-die{
+  animation:diceRoll .22s linear infinite;
+  animation-delay:var(--delay);
+}
+@keyframes diceRoll{
+  0%{transform:rotate(30deg) scale(1) translateY(0)}
+  25%{transform:rotate(120deg) scale(1.12) translateY(-7px)}
+  50%{transform:rotate(220deg) scale(.94) translateY(4px)}
+  75%{transform:rotate(300deg) scale(1.08) translateY(-4px)}
+  100%{transform:rotate(390deg) scale(1) translateY(0)}
+}
+#rollBtn:disabled{opacity:.72;cursor:not-allowed;transform:none}
+
+.live-clock{position:relative;z-index:3;display:inline-flex;align-items:center;gap:12px;margin:8px auto 10px;padding:9px 18px;border:1px solid #ff3b3b;border-radius:10px;background:#080b15;box-shadow:0 0 18px #ff303044}
+.clock-label{font-size:11px;font-weight:bold;letter-spacing:1.5px;color:#aeb8c8}
+#liveClock{font-size:22px;letter-spacing:2px;color:#fff;font-variant-numeric:tabular-nums;text-shadow:0 0 12px #fff6}

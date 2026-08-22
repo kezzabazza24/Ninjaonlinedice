@@ -13,3 +13,11 @@ This version provides:
 - Optional privacy/blur overlay
 
 Security note: the included public insert policy is suitable for testing, but for a production "provably fair" system, move roll generation and inserts to a trusted server/Edge Function so clients cannot directly write arbitrary roll records.
+
+
+## Admin + secure rolls
+1. Create an email/password user in Supabase Authentication for yourself.
+2. Run `supabase-secure-admin.sql`.
+3. Add your user's UUID to `admin_users` using the commented SQL in that file.
+4. Upload `admin.html` and `admin.js` to GitHub.
+5. The included Edge Function source is the next step for server-side roll creation; do not put a service-role key into GitHub or browser JavaScript.
