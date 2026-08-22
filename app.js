@@ -51,7 +51,7 @@ function dots(r){return r.map(c=>`<i class="dot ${c}"></i>`).join("")}
 async function load(){
   const {data,error}=await db.from("rolls").select("*").order("created_at",{ascending:false}).limit(20);
   if(error){history.textContent="Database not connected yet.";return}
-  history.innerHTML=data.map((x,i)=>`<div class="history-item"><b>#${data.length-i}</b><span class="dots">${dots(x.colours)}</span><time>${new Date(x.created_at).toLocaleString()}</time></div>`).join("");
+  history.innerHTML=data.length ? data.map((x,i)=>`<div class="history-item"><b>#${data.length-i}</b><span class="dots">${dots(x.colours)}</span><code class="history-code">${x.code}</code><time>${new Date(x.created_at).toLocaleString()}</time></div>`).join("") : "No verified rolls yet — be the first to roll!";
 }
 
 function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
