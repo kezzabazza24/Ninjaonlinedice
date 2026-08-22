@@ -1,9 +1,25 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ninja Online Dice</title><link rel="stylesheet" href="style.css"></head><body>
-<div class="live-clock" aria-live="polite">
-  <span class="clock-label">LIVE TIME</span>
-  <strong id="liveClock">00:00:00</strong>
-</div>
-<header><a class="brand friendly-brand" href="index.html"><span class="brand-ninja">🥷</span><span><strong>Ninja</strong><em>Online Dice</em></span></a><nav><a href="index.html">HOME</a><a href="verify.html">VERIFY ROLL</a><a href="#history">LAST ROLLS</a><a href="admin.html">ADMIN</a></nav></header>
+<header class="site-header">
+  <a class="brand friendly-brand" href="index.html" aria-label="Ninja Online Dice home">
+    <span class="brand-ninja">🥷</span>
+    <span class="brand-copy">
+      <strong>NINJA</strong>
+      <em>ONLINE DICE</em>
+    </span>
+  </a>
+
+  <nav class="main-nav">
+    <a class="nav-home" href="index.html">⌂ HOME</a>
+    <a href="verify.html">✓ VERIFY ROLL</a>
+    <a href="last-rolls.html">◷ LAST ROLLS</a>
+    <a class="nav-admin" href="admin.html">⚙ ADMIN</a>
+  </nav>
+
+  <div class="header-clock" aria-live="polite">
+    <span>LIVE TIME</span>
+    <strong id="liveClock">00:00:00</strong>
+  </div>
+</header>
 <main><section class="hero"><div class="ghost">🥷</div><h1>NINJA <span>ONLINE DICE</span></h1><h2>ROLL 4 DICE. <i>100% RANDOM.</i></h2><p>Four independent colour results. Every roll receives a verification code.</p>
 <div class="dice-wrap"><div id="diceStage" class="dice-stage"></div><div id="privacy" class="privacy"><div>🥷<strong>PRIVACY MODE</strong><small>Dice hidden on this screen</small></div></div></div>
 
