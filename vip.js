@@ -47,3 +47,9 @@ const wait=ms=>new Promise(r=>setTimeout(r,ms));
 btn.onclick=async()=>{if(rolling)return;rolling=true;btn.disabled=true;btn.textContent="⚡ VIP ROLLING...";sound();stage.classList.add("is-rolling");const start=Date.now();while(Date.now()-start<1000){draw([pick(),pick(),pick(),pick()],true);await wait(85)}const roll=[pick(),pick(),pick(),pick()];draw(roll);stage.classList.remove("is-rolling");const code=makeCode();$("#vipCode").textContent=code;$("#vipStatus").textContent="Saving VIP verified roll…";const {error}=await db.from("rolls").insert({code,colours:roll});$("#vipStatus").textContent=error?"VIP roll completed but could not be saved.":"✓ VIP roll verified and saved.";btn.disabled=false;btn.textContent="👑 ROLL VIP DICE 👑";rolling=false};
 draw(["purple","yellow","red","blue"]);
 refreshAccess();
+
+
+const vipClock=$("#vipClock");
+function updateVipClock(){ if(vipClock) vipClock.textContent=new Date().toLocaleTimeString("en-GB",{hour12:false}); }
+updateVipClock(); setInterval(updateVipClock,1000);
+document.querySelector(".vip-reset")?.addEventListener("click",()=>document.querySelectorAll(".colour-toggle input").forEach(x=>x.checked=false));

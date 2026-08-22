@@ -1,45 +1,64 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>VIP | The RuleBreaker | Ninja Online Dice</title><link rel="stylesheet" href="style.css">
-</head><body class="vip-body">
-<header><a class="brand" href="index.html">🥷 <b>NINJA</b> ONLINE DICE</a><nav><a href="index.html">HOME</a><a href="verify.html">VERIFY ROLL</a></nav></header>
+<title>VIP | The RuleBreaker | Ninja Online Dice</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="vip-body vip-neon">
+<header class="vip-topbar">
+  <a class="vip-brand" href="index.html"><span class="ninja-logo">🥷</span><span><b>NINJA</b><em>ONLINE DICE</em></span></a>
+  <nav class="vip-nav">
+    <a href="index.html">⌂ HOME</a><a href="verify.html">✓ VERIFY ROLL</a><a href="index.html#history">▣ LAST ROLLS</a><a href="admin.html">⚙ ADMIN</a>
+  </nav>
+  <div class="vip-clock"><small>◉ LIVE TIME</small><strong id="vipClock">--:--:--</strong></div>
+</header>
+
 <main class="vip-page">
 <section id="vipLoginPanel" class="vip-login-card">
   <div class="vip-crown">👑</div><div class="vip-badge">VIP ACCESS ONLY</div>
   <h1>THE <span>RULEBREAKER</span></h1><p class="vip-sub">ENTER VIP CREDENTIALS</p>
   <input id="vipEmail" type="email" placeholder="VIP email" autocomplete="email">
   <input id="vipPassword" type="password" placeholder="VIP password" autocomplete="current-password">
-  <button id="vipLoginBtn">👑 ENTER VIP ARENA 👑</button>
-  <p id="vipLoginMessage"></p>
+  <button id="vipLoginBtn">👑 ENTER VIP ARENA 👑</button><p id="vipLoginMessage"></p>
 </section>
 
-<section id="vipArena" class="hidden">
-  <div class="vip-crown">👑</div><div class="vip-badge">EXCLUSIVE VIP ACCESS</div>
-  <h1>THE <span>RULEBREAKER</span></h1><p class="vip-sub">OFFICIAL VIP NINJA DICE ARENA</p>
-  <button id="vipLogoutBtn" class="vip-logout">LOG OUT</button><div class="vip-line"></div>
-  <section class="vip-dice-card">
-    <div class="vip-label">🔥 VIP 4 COLOUR ROLL 🔥</div>
-    <div id="vipDiceStage" class="dice-stage"></div>
-    <button id="vipRollBtn">👑 ROLL VIP DICE 👑</button>
-    <div id="vipStatus"></div>
-    <div class="vip-code"><small>VIP VERIFICATION CODE</small><code id="vipCode">ROLL TO GENERATE</code></div>
-  </section>
-  <div class="vip-colour-controls">
-  <div class="vip-control-title">🎛️ VIP ROLL SETTINGS <small>Choose colours to exclude</small></div>
-  <div class="colour-toggle-grid">
-    <label class="colour-toggle red"><input type="checkbox" value="red"><span>RED</span></label>
-    <label class="colour-toggle blue"><input type="checkbox" value="blue"><span>BLUE</span></label>
-    <label class="colour-toggle green"><input type="checkbox" value="green"><span>GREEN</span></label>
-    <label class="colour-toggle yellow"><input type="checkbox" value="yellow"><span>YELLOW</span></label>
-    <label class="colour-toggle orange"><input type="checkbox" value="orange"><span>ORANGE</span></label>
-    <label class="colour-toggle purple"><input type="checkbox" value="purple"><span>PURPLE</span></label>
+<section id="vipArena" class="hidden vip-dashboard">
+  <div class="vip-main-column">
+    <section class="vip-verified-card">
+      <div class="vip-room-title">👑 <span>VIP ROOM:</span> THE RULEBREAKER</div>
+      <div class="verified-msg">🟢 <b>VIP roll verified and saved.</b></div>
+      <div class="vip-code"><small>VIP VERIFICATION CODE</small><code id="vipCode">VIP-1GQ91-Y4GRX</code></div>
+    </section>
+
+    <section class="vip-dice-card">
+      <div class="vip-label">👑 VIP 4 COLOUR ROLL 👑</div>
+      <div id="vipDiceStage" class="dice-stage"></div>
+      <button id="vipRollBtn">👑 ROLL VIP DICE 👑</button>
+      <div id="vipStatus"></div>
+    </section>
+
+    <div class="vip-bottom-row">
+      <div class="vip-status-card"><b>👑 VIP STATUS</b><span>THE RULEBREAKER</span></div>
+      <label class="vip-privacy">🔒 <span>PRIVACY / BLUR MODE</span><input type="checkbox" id="vipPrivacyToggle"><i></i></label>
+      <div class="vip-active">● <b>2 ACTIVE PLAYERS</b></div>
+    </div>
+    <div class="vip-live-card">⚡ <b>LIVE ROLLS</b><small>100% RANDOM</small></div>
   </div>
-</div>
-  <section class="vip-info">
-    <div><b>👑 VIP STATUS</b><span>THE RULEBREAKER</span></div>
-    <div><b>🥷 NINJA VERIFIED</b><span>EXCLUSIVE ACCESS</span></div>
-    <div><b>⚡ LIVE ROLLS</b><span>100% RANDOM</span></div>
-  </section>
+
+  <aside class="vip-colour-controls">
+    <div class="filter-head">▽ <b>VIP COLOUR FILTER</b><small>Choose colours to exclude<br>from the roll.</small></div>
+    <div class="colour-toggle-grid">
+      <label class="colour-toggle red"><input type="checkbox" value="red"><span><i></i>RED <b>×</b></span></label>
+      <label class="colour-toggle blue"><input type="checkbox" value="blue"><span><i></i>BLUE <b>×</b></span></label>
+      <label class="colour-toggle green"><input type="checkbox" value="green"><span><i></i>GREEN <b>✓</b></span></label>
+      <label class="colour-toggle yellow"><input type="checkbox" value="yellow"><span><i></i>YELLOW <b>×</b></span></label>
+      <label class="colour-toggle orange"><input type="checkbox" value="orange"><span><i></i>ORANGE <b>✓</b></span></label>
+      <label class="colour-toggle purple"><input type="checkbox" value="purple"><span><i></i>PURPLE <b>×</b></span></label>
+    </div>
+    <button type="button" class="vip-reset">⟳ RESET FILTERS</button>
+  </aside>
+  <button id="vipLogoutBtn" class="vip-logout">LOG OUT</button>
 </section>
-</main><script type="module" src="vip.js"></script></body></html>
+</main>
+<script type="module" src="vip.js"></script>
+</body></html>
