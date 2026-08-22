@@ -19,7 +19,13 @@
   <h1>THE <span>RULEBREAKER</span></h1><p class="vip-sub">OFFICIAL VIP NINJA DICE ARENA</p>
   <button id="vipLogoutBtn" class="vip-logout">LOG OUT</button><div class="vip-line"></div>
   <section class="vip-dice-card">
-    <div class="vip-label">🔥 VIP 4 COLOUR ROLL 🔥</div><div class="vip-colour-controls">
+    <div class="vip-label">🔥 VIP 4 COLOUR ROLL 🔥</div>
+    <div id="vipDiceStage" class="dice-stage"></div>
+    <button id="vipRollBtn">👑 ROLL VIP DICE 👑</button>
+    <div id="vipStatus"></div>
+    <div class="vip-code"><small>VIP VERIFICATION CODE</small><code id="vipCode">ROLL TO GENERATE</code></div>
+  </section>
+  <div class="vip-colour-controls">
   <div class="vip-control-title">🎛️ VIP ROLL SETTINGS <small>Choose colours to exclude</small></div>
   <div class="colour-toggle-grid">
     <label class="colour-toggle red"><input type="checkbox" value="red"><span>RED</span></label>
@@ -30,11 +36,6 @@
     <label class="colour-toggle purple"><input type="checkbox" value="purple"><span>PURPLE</span></label>
   </div>
 </div>
-    <div id="vipDiceStage" class="dice-stage"></div>
-    <button id="vipRollBtn">👑 ROLL VIP DICE 👑</button>
-    <div id="vipStatus"></div>
-    <div class="vip-code"><small>VIP VERIFICATION CODE</small><code id="vipCode">ROLL TO GENERATE</code></div>
-  </section>
   <section class="vip-info">
     <div><b>👑 VIP STATUS</b><span>THE RULEBREAKER</span></div>
     <div><b>🥷 NINJA VERIFIED</b><span>EXCLUSIVE ACCESS</span></div>
