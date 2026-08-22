@@ -1,64 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Ninja Online Dice</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header>
-  <div class="brand"><span class="mask">🥷</span><div><b>NINJA</b><em>ONLINE DICE</em></div></div>
-  <nav><a class="active" href="#">HOME</a><a href="#verify">VERIFY ROLL</a><a href="#how">HOW IT WORKS</a><a href="#faq">FAQ</a><a href="#about">ABOUT</a></nav>
-  <a class="admin" href="admin.html">🔒 ADMIN LOGIN</a>
-</header>
-
-<main>
-<section class="hero">
-  <div class="ninja-bg">🥷</div>
-  <div class="city">⛩</div>
-  <div class="hero-copy">
-    <h1>NINJA <span>ONLINE DICE</span></h1>
-    <h2>ROLL 4 DICE. <i>100% FAIR.</i> <strong>100% VERIFIABLE.</strong></h2>
-    <p>Every roll gives 4 independently selected random colours.</p>
-  </div>
-  <div id="diceStage" class="dice-stage" aria-label="Four dice"></div>
-  <button id="rollBtn" class="roll">✦ &nbsp; ROLL DICE &nbsp; ✦<small>CLICK TO ROLL 4 DICE</small></button>
-</section>
-
-<section id="verify" class="verify">
-  <div class="shield">🔒</div>
-  <div><h3>YOUR VERIFICATION CODE</h3><p>Use this code on the verify page to prove this roll is legit.</p></div>
-  <code id="code">ROLL TO GENERATE</code>
-  <button id="copyBtn">▣ &nbsp; COPY CODE</button>
-</section>
-
-<section class="dashboard">
-  <section class="history">
-    <h2>✦ &nbsp; LAST 20 ROLLS &nbsp; ✦</h2>
-    <div class="history-head"><span>#</span><span>ROLL (4 DICE)</span><span>TIME</span><span>CODE</span></div>
-    <div id="rollHistory"></div>
-  </section>
-
-  <div class="side">
-    <section id="how" class="features">
-      <article class="fair"><span>🎲</span><h3>100% FAIR</h3><p>All rolls are generated randomly.</p></article>
-      <article class="verifiable"><span>✓</span><h3>VERIFIABLE</h3><p>Every roll has a unique code.</p></article>
-      <article class="secure"><span>🔒</span><h3>SECURE</h3><p>Production rolls can be protected server-side.</p></article>
-      <article class="instant"><span>ϟ</span><h3>INSTANT</h3><p>Get results immediately.</p></article>
-    </section>
-    <section class="stats">
-      <h2>✦ &nbsp; LIVE STATS &nbsp; ✦</h2>
-      <div><span>🎲</span><small>TOTAL ROLLS</small><b id="totalRolls">0</b></div>
-      <div><span>♧</span><small>ROLLS TODAY</small><b id="todayRolls">0</b></div>
-      <div><span>✓</span><small>VERIFIED ROLLS</small><b id="verifiedRolls">0</b></div>
-      <div><span>◷</span><small>LOCAL TIME</small><b id="clock">--:--:--</b></div>
-    </section>
-  </div>
-</section>
-</main>
-
-<footer><div class="brand"><span class="mask">🥷</span><div><b>NINJA</b><em>ONLINE DICE</em></div></div><p>© 2026 Ninja Online Dice. Fair. Transparent. Verifiable.</p><div class="social">◉ &nbsp; ♥ &nbsp; ◎</div></footer>
-<script src="app.js"></script>
-</body>
-</html>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ninja Online Dice</title><link rel="stylesheet" href="style.css"></head><body>
+<header><a class="brand" href="index.html">🥷 <b>NINJA</b> ONLINE DICE</a><nav><a href="index.html">HOME</a><a href="verify.html">VERIFY ROLL</a><a href="#history">LAST ROLLS</a></nav></header>
+<main><section class="hero"><div class="ghost">🥷</div><h1>NINJA <span>ONLINE DICE</span></h1><h2>ROLL 4 DICE. <i>100% RANDOM.</i></h2><p>Four independent colour results. Every roll receives a verification code.</p>
+<div class="dice-wrap"><div id="diceStage" class="dice-stage"></div><div id="privacy" class="privacy"><div>🥷<strong>PRIVACY MODE</strong><small>Dice hidden on this screen</small></div></div></div>
+<div class="controls"><label><input id="privacyToggle" type="checkbox"> Privacy / Blur Mode</label><span class="players">● <b id="activePlayers">—</b> ACTIVE PLAYERS</span></div>
+<button id="rollBtn">✦ ROLL 4 DICE ✦</button><div id="rollStatus"></div></section>
+<section class="verifybox"><h2>YOUR VERIFICATION CODE</h2><code id="code">ROLL TO GENERATE</code><button id="copyBtn">COPY CODE</button><p><a href="verify.html">Verify a roll →</a></p></section>
+<section id="history" class="history"><h2>✦ LAST 20 ROLLS ✦</h2><div id="rollHistory">Loading shared rolls…</div></section></main><script type="module" src="app.js"></script></body></html>
