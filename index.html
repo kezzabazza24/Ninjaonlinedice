@@ -42,5 +42,19 @@
 </div>
 <div class="controls"><label><input id="privacyToggle" type="checkbox"> 🔒 PRIVACY / BLUR MODE</label><span class="players">● <b id="activePlayers">—</b> ACTIVE PLAYERS</span></div>
 <button id="rollBtn">⚡ ROLL 4 DICE ⚡</button><div id="rollStatus"></div></section>
-<section class="verifybox"><h2>YOUR VERIFICATION CODE</h2><code id="code">ROLL TO GENERATE</code><button id="copyBtn">COPY CODE</button><p><a href="verify.html">Verify a roll →</a></p></section>
-<section id="history" class="history"><h2>✦ LAST 20 ROLLS ✦</h2><div id="rollHistory">Loading shared rolls…</div></section></main><script type="module" src="app.js"></script></body></html>
+<section class="verification-panel" aria-live="polite">
+  <div class="verification-copy">
+    <span>🔐 LATEST VERIFICATION CODE</span>
+    <code id="code">ROLL TO GENERATE</code>
+  </div>
+  <button id="copyBtn" type="button">COPY CODE</button>
+  <a class="verify-link" href="verify.html">CHECK A CODE →</a>
+</section>
+
+<section id="history" class="history recent-rolls">
+  <div class="history-heading">
+    <h2>✦ LAST 20 VERIFIED ROLLS ✦</h2>
+    <a href="verify.html">CHECK A VERIFICATION CODE →</a>
+  </div>
+  <div id="rollHistory">Loading the last 20 shared rolls…</div>
+</section></main><script type="module" src="app.js"></script></body></html>

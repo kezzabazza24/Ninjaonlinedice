@@ -929,3 +929,8 @@ main,.site-header{position:relative;z-index:2}
 .history.recent-rolls{display:block!important;width:min(900px,calc(100% - 32px));margin:8px auto 30px!important;padding:14px 16px!important;background:rgba(7,12,30,.92);border:1px solid rgba(122,74,255,.65);box-shadow:0 0 26px rgba(69,59,255,.16),inset 0 0 30px rgba(0,120,255,.05);border-radius:16px}.history-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:5px}.history-heading h2{margin:0;font-size:15px;letter-spacing:1px;color:#d9edff;text-shadow:0 0 12px rgba(63,151,255,.6)}.history-heading a{font-size:10px;font-weight:900;color:#ffdc54;text-decoration:none}
 #rollHistory{max-height:250px;overflow:auto}.history-item{grid-template-columns:48px 1fr 180px 155px!important;gap:12px;padding:9px 8px!important;font-size:12px;border-bottom:1px solid rgba(100,139,208,.22)!important}.history-item>b{color:#89d9ff}.history-code{font-size:12px;color:#ffe86a;letter-spacing:.8px}.history-item time{font-size:10px;color:#91a0b8;text-align:right}
 @media(max-width:700px){.verification-panel{flex-wrap:wrap;gap:8px;padding:10px}.verification-copy{width:100%;justify-content:center;flex-wrap:wrap}.verification-copy span{font-size:9px}.verification-copy code{font-size:15px}.history-item{grid-template-columns:38px 1fr 130px!important}.history-item time{display:none}.history-heading h2{font-size:12px}.verify-link{font-size:9px}}
+
+/* Final safety fix: these sections must remain visible on the homepage. */
+main > .verification-panel{display:flex!important;position:relative;z-index:3}
+main > .history.recent-rolls{display:block!important;position:relative;z-index:3}
+.history-empty{padding:16px 8px;text-align:center;color:#b9c9e8;font-size:12px}

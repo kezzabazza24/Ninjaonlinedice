@@ -49,9 +49,26 @@ function playRollSound(){
 function dots(r){return r.map(c=>`<i class="dot ${c}"></i>`).join("")}
 
 async function load(){
-  const {data,error}=await db.from("rolls").select("*").order("created_at",{ascending:false}).limit(20);
-  if(error){history.textContent="Database not connected yet.";return}
-  history.innerHTML=data.length ? data.map((x,i)=>`<div class="history-item"><b>#${data.length-i}</b><span class="dots">${dots(x.colours)}</span><code class="history-code">${x.code}</code><time>${new Date(x.created_at).toLocaleString()}</time></div>`).join("") : "No verified rolls yet — be the first to roll!";
+  try{
+    const {data,error}=await db.from("rolls").select("*").order("created_at",{ascending:false}).limit(20);
+    if(error) throw error;
+    const rolls=Array.isArray(data) ? data : [];
+    history.innerHTML=rolls.length
+      ? rolls.map((x,i)=>{
+          const results=Array.isArray(x.colours) ? x.colours : [];
+          const when=x.created_at ? new Date(x.created_at).toLocaleString() : "Just now";
+          return `<div class="history-item">
+            <b>#${rolls.length-i}</b>
+            <span class="dots">${dots(results)}</span>
+            <code class="history-code">${x.code || "NO CODE"}</code>
+            <time>${when}</time>
+          </div>`;
+        }).join("")
+      : '<div class="history-empty">No verified rolls yet — be the first to roll!</div>';
+  }catch(error){
+    console.error("Could not load recent rolls:", error);
+    history.innerHTML='<div class="history-empty">Recent rolls could not load. Please check the Supabase rolls table and reload.</div>';
+  }
 }
 
 function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
@@ -93,7 +110,19 @@ rollBtn.onclick=async()=>{
   load();
 };
 
-document.querySelector("#copyBtn").onclick=()=>navigator.clipboard.writeText(document.querySelector("#code").textContent);
+document.querySelector("#copyBtn").onclick=async()=>{
+  const value=document.querySelector("#code").textContent;
+  if(value==="ROLL TO GENERATE") return;
+  try{
+    await navigator.clipboard.writeText(value);
+    const btn=document.querySelector("#copyBtn");
+    const original=btn.textContent;
+    btn.textContent="COPIED ✓";
+    setTimeout(()=>btn.textContent=original,1200);
+  }catch(error){
+    console.error("Copy failed:",error);
+  }
+};
 document.querySelector("#privacyToggle").onchange=e=>{
   const enabled=e.target.checked;
   const privacy=document.querySelector("#privacy");
