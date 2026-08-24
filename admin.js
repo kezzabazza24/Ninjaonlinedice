@@ -21,11 +21,56 @@ async function loadVipMembers(){
 
 async function showDashboard(){
   const {data:{user}}=await db.auth.getUser();
-  if(!user){$("#loginPanel").classList.remove("hidden");$("#dashboard").classList.add("hidden");return}
-  $("#loginPanel").classList.add("hidden");$("#dashboard").classList.remove("hidden");
+
+  if(!user){
+    $("#loginPanel").classList.remove("hidden");
+    $("#dashboard").classList.add("hidden");
+    return;
+  }
+
+  // Check whether this signed-in user is the site VIP administrator.
+  const {data:adminRow,error:adminError}=await db
+    .from("admin_users")
+    .select("user_id")
+    .eq("user_id",user.id)
+    .maybeSingle();
+
+  if(adminError){
+    $("#loginMessage").textContent="Could not check account access. Please check your Supabase admin policy.";
+    return;
+  }
+
+  // VIP members must never see the VIP CONTROL dashboard.
+  // Send them to their own VIP arena instead.
+  if(!adminRow){
+    const {data:vipMember}=await db
+      .from("vip_members")
+      .select("page_slug")
+      .eq("user_id",user.id)
+      .maybeSingle();
+
+    if(vipMember){
+      window.location.replace("vip.html");
+      return;
+    }
+
+    await db.auth.signOut();
+    $("#loginPanel").classList.remove("hidden");
+    $("#dashboard").classList.add("hidden");
+    $("#loginMessage").textContent="This account does not have VIP access.";
+    return;
+  }
+
+  $("#loginPanel").classList.add("hidden");
+  $("#dashboard").classList.remove("hidden");
   $("#adminEmail").textContent=user.email;
+
   const {data,error}=await db.from("rolls").select("*").order("created_at",{ascending:false}).limit(100);
-  if(error){$("#adminRolls").textContent="You are signed in, but your account is not allowed to read VIP control data yet.";return}
+  if(error){
+    $("#adminRolls").textContent="You are signed in, but your account is not allowed to read VIP control data yet.";
+    return;
+  }
+
   $("#totalRolls").textContent=data.length;
   const today=new Date().toDateString();
   $("#todayRolls").textContent=data.filter(x=>new Date(x.created_at).toDateString()===today).length;
@@ -39,7 +84,7 @@ $("#loginBtn").onclick=async()=>{
   $("#loginMessage").textContent="Signing in…";
   const {error}=await db.auth.signInWithPassword({email,password});
   $("#loginMessage").textContent=error?error.message:"";
-  if(!error)showDashboard();
+  if(!error) await showDashboard();
 };
 $("#logoutBtn").onclick=async()=>{await db.auth.signOut();showDashboard()};
 
