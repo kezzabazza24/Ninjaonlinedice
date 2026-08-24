@@ -48,27 +48,42 @@ function playRollSound(){
 
 function dots(r){return r.map(c=>`<i class="dot ${c}"></i>`).join("")}
 
-async function load(){
+const PERSONAL_ROLLS_KEY="ninjaPersonalRolls";
+
+function getPersonalRolls(){
   try{
-    const {data,error}=await db.from("rolls").select("*").order("created_at",{ascending:false}).limit(20);
-    if(error) throw error;
-    const rolls=Array.isArray(data) ? data : [];
-    history.innerHTML=rolls.length
-      ? rolls.map((x,i)=>{
-          const results=Array.isArray(x.colours) ? x.colours : [];
-          const when=x.created_at ? new Date(x.created_at).toLocaleString() : "Just now";
-          return `<div class="history-item">
-            <b>#${rolls.length-i}</b>
-            <span class="dots">${dots(results)}</span>
-            <code class="history-code">${x.code || "NO CODE"}</code>
-            <time>${when}</time>
-          </div>`;
-        }).join("")
-      : '<div class="history-empty">No verified rolls yet — be the first to roll!</div>';
-  }catch(error){
-    console.error("Could not load recent rolls:", error);
-    history.innerHTML='<div class="history-empty">Recent rolls could not load. Please check the Supabase rolls table and reload.</div>';
-  }
+    const value=JSON.parse(localStorage.getItem(PERSONAL_ROLLS_KEY)||"[]");
+    return Array.isArray(value)?value:[];
+  }catch{return []}
+}
+function savePersonalRoll(roll){
+  const rolls=getPersonalRolls();
+  rolls.unshift(roll);
+  localStorage.setItem(PERSONAL_ROLLS_KEY,JSON.stringify(rolls.slice(0,20)));
+}
+function renderPersonalRolls(){
+  const rolls=getPersonalRolls();
+  history.innerHTML=rolls.length
+    ? rolls.map(x=>{
+        const results=Array.isArray(x.colours)?x.colours:[];
+        const when=x.created_at?new Date(x.created_at).toLocaleTimeString([], {hour:"2-digit",minute:"2-digit",second:"2-digit"}):"Just now";
+        return `<div class="history-item">
+          <time>${when}</time>
+          <span class="dots">${dots(results)}</span>
+          <code class="history-code">${x.code||"NO CODE"}</code>
+        </div>`;
+      }).join("")
+    : '<div class="history-empty">No rolls yet — your last 20 rolls will appear here.</div>';
+}
+async function load(){
+  renderPersonalRolls();
+  try{
+    const {count,error}=await db.from("rolls").select("*",{count:"exact",head:true});
+    if(!error && document.querySelector("#totalRolls")) document.querySelector("#totalRolls").textContent=(count||0).toLocaleString();
+    const startToday=new Date(); startToday.setHours(0,0,0,0);
+    const {count:todayCount,error:todayError}=await db.from("rolls").select("*",{count:"exact",head:true}).gte("created_at",startToday.toISOString());
+    if(!todayError && document.querySelector("#rollsToday")) document.querySelector("#rollsToday").textContent=(todayCount||0).toLocaleString();
+  }catch(error){console.error("Could not load site stats:",error)}
 }
 
 function wait(ms){return new Promise(resolve=>setTimeout(resolve,ms))}
@@ -99,7 +114,11 @@ rollBtn.onclick=async()=>{
   document.querySelector("#code").textContent=c;
   document.querySelector("#rollStatus").textContent="Saving verified roll…";
 
-  const {error}=await db.from("rolls").insert({code:c,colours:roll});
+  const created_at=new Date().toISOString();
+  const {error}=await db.from("rolls").insert({code:c,colours:roll,created_at});
+  if(!error){
+    savePersonalRoll({code:c,colours:roll,created_at});
+  }
   document.querySelector("#rollStatus").textContent=error
     ?"Roll completed, but the verified result could not be saved."
     :"✓ Roll complete and saved as a verified result.";
@@ -133,7 +152,12 @@ document.querySelector("#privacyToggle").onchange=e=>{
 
 const channel=db.channel("presence",{config:{presence:{key:crypto.randomUUID()}}});
 channel.on("presence",{event:"sync"},()=>{
-  document.querySelector("#activePlayers").textContent=Object.keys(channel.presenceState()).length;
+  const count=Object.keys(channel.presenceState()).length;
+  document.querySelector("#activePlayers").textContent=count;
+  const onlineStat=document.querySelector("#onlineStat");
+  if(onlineStat) onlineStat.textContent=count;
+  const plural=document.querySelector(".plural");
+  if(plural) plural.style.display=count===1?"none":"inline";
 }).subscribe(async s=>{
   if(s==="SUBSCRIBED") await channel.track({online_at:new Date().toISOString()});
 });
@@ -156,10 +180,12 @@ if(liveClock){
   setInterval(updateClock,1000);
 }
 
-// Personal pick counter — stored locally so each player can track whether they are up or down.
+// Personal pick counter — stored locally so each player can track their own session.
 const scoreValue=document.querySelector("#scoreValue");
 const scorePlus=document.querySelector("#scorePlus");
 const scoreMinus=document.querySelector("#scoreMinus");
+const scorePlus10=document.querySelector("#scorePlus10");
+const scoreMinus10=document.querySelector("#scoreMinus10");
 const scoreReset=document.querySelector("#scoreReset");
 let pickScore=Number(localStorage.getItem("ninjaPickScore")||0);
 if(!Number.isFinite(pickScore)) pickScore=0;
@@ -172,5 +198,20 @@ function updatePickScore(){
 }
 scorePlus?.addEventListener("click",()=>{pickScore++;updatePickScore()});
 scoreMinus?.addEventListener("click",()=>{pickScore--;updatePickScore()});
+scorePlus10?.addEventListener("click",()=>{pickScore+=10;updatePickScore()});
+scoreMinus10?.addEventListener("click",()=>{pickScore-=10;updatePickScore()});
 scoreReset?.addEventListener("click",()=>{pickScore=0;updatePickScore()});
 updatePickScore();
+
+const quickVerifyInput=document.querySelector("#quickVerifyCode");
+const quickVerifyBtn=document.querySelector("#quickVerifyBtn");
+const quickVerifyResult=document.querySelector("#quickVerifyResult");
+quickVerifyBtn?.addEventListener("click",async()=>{
+  const value=(quickVerifyInput?.value||"").trim().toUpperCase();
+  if(!value){quickVerifyResult.textContent="Enter a verification code first.";return}
+  quickVerifyResult.textContent="Checking…";
+  const {data,error}=await db.from("rolls").select("*").eq("code",value).maybeSingle();
+  if(error){quickVerifyResult.textContent="Could not check this code right now.";return}
+  if(!data){quickVerifyResult.textContent="No verified roll was found with that code.";return}
+  quickVerifyResult.innerHTML=`✓ Verified: <span class="dots">${dots(Array.isArray(data.colours)?data.colours:[])}</span>`;
+});
