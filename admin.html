@@ -1,29 +1,42 @@
 <!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Admin | Ninja Online Dice</title><link rel="stylesheet" href="style.css">
+<title>VIP Login | Ninja Online Dice</title><link rel="stylesheet" href="style.css">
 </head><body>
 <header><a class="brand" href="index.html">🥷 <b>NINJA</b> ONLINE DICE</a>
 <nav><a href="index.html">HOME</a><a href="verify.html">VERIFY ROLL</a></nav></header>
 
 <main class="admin-page">
   <section id="loginPanel" class="admin-card">
-    <h1>🔒 ADMIN LOGIN</h1>
-    <p>Sign in with your Supabase admin account.</p>
+    <h1>👑 VIP LOGIN</h1>
+    <p>Sign in with your authorised Ninja Dice account.</p>
     <input id="email" type="email" placeholder="Email address">
     <input id="password" type="password" placeholder="Password">
-    <button id="loginBtn">LOGIN</button>
+    <button id="loginBtn">ENTER VIP</button>
     <p id="loginMessage"></p>
   </section>
 
   <section id="dashboard" class="admin-dashboard hidden">
-    <div class="admin-top"><div><h1>🥷 ADMIN DASHBOARD</h1><p id="adminEmail"></p></div><button id="logoutBtn">LOG OUT</button></div>
+    <div class="admin-top"><div><h1>👑 VIP CONTROL</h1><p id="adminEmail"></p></div><button id="logoutBtn">LOG OUT</button></div>
 
     <div class="admin-stats">
       <article><small>TOTAL ROLLS</small><b id="totalRolls">0</b></article>
       <article><small>ROLLS TODAY</small><b id="todayRolls">0</b></article>
       <article><small>LAST ROLL</small><b id="lastRoll">—</b></article>
     </div>
+
+    <section class="admin-card">
+      <h2>VIP MEMBERS</h2>
+      <p class="muted">Add an existing Supabase Auth user's UUID to give them their own personalised VIP page. Their page can have its own VIP name and URL slug.</p>
+      <div class="vip-member-form">
+        <input id="vipUserId" placeholder="VIP user UUID">
+        <input id="vipDisplayName" placeholder="VIP display name (e.g. THE RULEBREAKER)">
+        <input id="vipSlug" placeholder="Page slug (e.g. therulebreaker)">
+        <button id="addVipBtn">ADD VIP MEMBER</button>
+      </div>
+      <p id="vipMemberMessage"></p>
+      <div id="vipMembers">Loading VIP members…</div>
+    </section>
 
     <section class="admin-card">
       <h2>RECENT ROLLS</h2>
@@ -34,9 +47,9 @@
       <h2>SITE SETTINGS</h2>
       <label class="setting-row">Privacy / Blur mode available to players <input id="privacySetting" type="checkbox" checked></label>
       <label class="setting-row">Rolling temporarily enabled <input id="rollingSetting" type="checkbox" checked></label>
-      <p class="muted">These switches are visual settings in this version. They can be connected to a shared settings table next.</p>
+      <p class="muted">These switches are visual settings in this version.</p>
     </section>
   </section>
-<section class="admin-card vip-admin-card"><h2>👑 VIP ROOMS</h2><p>Exclusive VIP version of Ninja Online Dice.</p><a class="vip-open" href="vip.html">OPEN VIP PAGE</a></section></main>
+</main>
 <script type="module" src="admin.js"></script>
 </body></html>

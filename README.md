@@ -25,3 +25,13 @@ Security note: the included public insert policy is suitable for testing, but fo
 
 ## VIP Page
 Added `vip.html` and `vip.js` for The RuleBreaker VIP design. For secure VIP login, create a Supabase Auth user and use `admin_users`/role checks rather than storing a password in browser JavaScript.
+
+
+## VIP Login + Multiple VIP Members
+1. Run `supabase-vip-members.sql` in the Supabase SQL Editor after `supabase-secure-admin.sql`.
+2. Create each VIP player as an email/password user in Supabase Authentication.
+3. Sign into `admin.html` (now labelled **VIP LOGIN / VIP CONTROL**) with your authorised control account.
+4. Add the VIP user's UUID, display name and unique page slug.
+5. Each authorised VIP account can sign into `vip.html` and sees their own personalised VIP name/page.
+
+The VIP member list is stored in `vip_members`; only the authorised control account can add or remove members.

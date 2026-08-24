@@ -1,30 +1,43 @@
 import {createClient} from "https://esm.sh/@supabase/supabase-js@2";
 import {SUPABASE_URL,SUPABASE_ANON_KEY} from "./config.js";
 const db=createClient(SUPABASE_URL,SUPABASE_ANON_KEY);
-const VIP_EMAIL="therulebreaker@gmail.com";
 const $=s=>document.querySelector(s);
 
+let currentVip=null;
 async function refreshAccess(){
  const {data:{user}}=await db.auth.getUser();
- const allowed=user && user.email?.toLowerCase()===VIP_EMAIL;
- $("#vipLoginPanel").classList.toggle("hidden",!!allowed);
- $("#vipArena").classList.toggle("hidden",!allowed);
- if(!allowed) return false;
+ if(!user){
+   currentVip=null;
+   $("#vipLoginPanel").classList.remove("hidden");
+   $("#vipArena").classList.add("hidden");
+   return false;
+ }
+ const {data:member,error}=await db.from("vip_members").select("*").eq("user_id",user.id).maybeSingle();
+ if(error || !member){
+   currentVip=null;
+   $("#vipLoginPanel").classList.remove("hidden");
+   $("#vipArena").classList.add("hidden");
+   return false;
+ }
+ currentVip=member;
+ document.querySelectorAll("[data-vip-name]").forEach(el=>el.textContent=member.display_name);
+ $("#vipLoginPanel").classList.add("hidden");
+ $("#vipArena").classList.remove("hidden");
  return true;
 }
 
 $("#vipLoginBtn").onclick=async()=>{
  const email=$("#vipEmail").value.trim().toLowerCase(),password=$("#vipPassword").value;
  $("#vipLoginMessage").textContent="Checking VIP access…";
- const {data,error}=await db.auth.signInWithPassword({email,password});
+ const {error}=await db.auth.signInWithPassword({email,password});
  if(error){$("#vipLoginMessage").textContent="Login failed. Check your email and password.";return}
- if(data.user.email?.toLowerCase()!==VIP_EMAIL){
+ const allowed=await refreshAccess();
+ if(!allowed){
    await db.auth.signOut();
    $("#vipLoginMessage").textContent="This account does not have VIP access.";
    return;
  }
  $("#vipLoginMessage").textContent="";
- refreshAccess();
 };
 $("#vipLogoutBtn").onclick=async()=>{await db.auth.signOut();refreshAccess()};
 

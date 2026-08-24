@@ -979,3 +979,11 @@ main > .history.recent-rolls{display:block!important;position:relative;z-index:3
 .privacy strong{font-size:8px!important;letter-spacing:1.2px!important;color:#ffe36a!important}
 .privacy small{display:none!important}
 @media(max-width:700px){.pick-counter{gap:5px!important}.counter-label{font-size:8px!important}.counter-btn{width:28px!important;height:28px!important;font-size:20px!important}#scoreValue{font-size:17px!important;min-width:42px!important}}
+
+/* VIP member management */
+.vip-member-form{display:grid;grid-template-columns:1.5fr 1fr 1fr auto;gap:10px;align-items:center;margin:15px 0}
+.vip-member-form input{margin:0;max-width:none}
+.vip-member-row{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:13px 0;border-bottom:1px solid #263044;text-align:left}
+.vip-member-row b{display:block;color:#ffd700}.vip-member-row small{display:block;color:#9faabd;margin-top:4px;word-break:break-all}
+.remove-vip{background:#18070a;border:1px solid #ff3b3b;color:#fff;padding:9px 14px;border-radius:8px;font-weight:bold;cursor:pointer}
+@media(max-width:800px){.vip-member-form{grid-template-columns:1fr}.vip-member-form button{width:100%}}
