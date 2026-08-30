@@ -341,3 +341,49 @@ body.games-page .site-bg:after{opacity:.12;background-size:48px 48px}
     transition: none !important;
   }
 }
+/* =========================================================
+   NINJA DICE - ENHANCED ROLL FINISH
+========================================================= */
+
+#diceStage.is-rolling {
+  animation: ninjaStagePulse .6s ease-in-out infinite alternate;
+}
+
+#diceStage.is-rolling .die {
+  will-change: transform, filter, box-shadow;
+}
+
+#diceStage:not(.is-rolling) .die {
+  will-change: transform, opacity;
+}
+
+@keyframes ninjaStagePulse {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.015);
+  }
+}
+
+/* Verified result glow */
+#rollStatus.success {
+  color: #8affb2;
+  text-shadow: 0 0 14px rgba(98,255,146,.65);
+}
+
+/* Failed result */
+#rollStatus.error {
+  color: #ff6675;
+  text-shadow: 0 0 14px rgba(255,38,56,.45);
+}
+
+/* Slightly more premium final dice */
+#diceStage:not(.is-rolling) .die {
+  box-shadow:
+    0 0 22px currentColor,
+    0 0 45px color-mix(in srgb, currentColor 35%, transparent),
+    0 9px 0 rgba(0,0,0,.3),
+    inset 0 0 18px rgba(255,255,255,.28);
+}
