@@ -71,3 +71,273 @@ body.games-page .site-bg:after{opacity:.12;background-size:48px 48px}
 .arcade-footer-panel{margin-top:26px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:linear-gradient(145deg,rgba(9,29,55,.94),rgba(3,12,27,.94));border-color:rgba(109,119,255,.35)}
 .arcade-badge{font-size:8px;font-weight:1000;letter-spacing:1.5px;color:#b8ff48}.arcade-footer-panel h3{margin:5px 0 3px;font-size:20px}.arcade-footer-panel p{margin:0;color:#8da9c4;font-size:10px}.reset-arcade{border:1px solid #4d91c7;background:#081a35;color:#dff5ff;border-radius:11px;padding:11px 15px;font-size:9px;font-weight:1000;cursor:pointer}.reset-arcade:hover{border-color:#6de8ff;box-shadow:0 0 18px rgba(65,215,255,.2)}
 @media(max-width:700px){.arcade-stats{gap:6px}.arcade-stats div{min-width:85px;padding:8px}.arcade-card{min-height:0}.fighter span{width:88px;height:88px;font-size:40px}.premium-rps{gap:14px}.arcade-footer-panel{flex-direction:column;align-items:flex-start}.reset-arcade{width:100%}}
+/* =========================================================
+   NINJA DICE - PREMIUM ROLL ANIMATION
+========================================================= */
+
+#diceStage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(12px, 2vw, 24px);
+  min-height: 150px;
+  perspective: 900px;
+}
+
+/* Individual dice */
+
+#diceStage .die {
+  width: clamp(62px, 7vw, 92px);
+  aspect-ratio: 1;
+  border-radius: 20%;
+  position: relative;
+  transform: translateZ(0) scale(1);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease;
+}
+
+/* Dice glow */
+
+#diceStage .die::after {
+  content: "";
+  position: absolute;
+  inset: 10%;
+  border-radius: inherit;
+  border: 2px solid rgba(255,255,255,.28);
+  pointer-events: none;
+}
+
+/* Rolling dice */
+
+#diceStage.is-rolling .die {
+  animation:
+    ninjaDiceShake .12s infinite alternate,
+    ninjaDiceFloat .45s infinite ease-in-out;
+  filter: brightness(1.15);
+}
+
+/* Rolling movement */
+
+@keyframes ninjaDiceShake {
+  0% {
+    transform:
+      translateY(-3px)
+      rotate(-3deg)
+      scale(.96);
+  }
+
+  100% {
+    transform:
+      translateY(3px)
+      rotate(3deg)
+      scale(1.04);
+  }
+}
+
+@keyframes ninjaDiceFloat {
+  0%, 100% {
+    box-shadow:
+      0 0 18px rgba(255,255,255,.25);
+  }
+
+  50% {
+    box-shadow:
+      0 0 35px rgba(255,255,255,.55);
+  }
+}
+
+/* =========================================================
+   FINAL RESULT REVEAL
+========================================================= */
+
+#diceStage:not(.is-rolling) .die {
+  animation: ninjaDiceReveal .45s cubic-bezier(.2,.9,.25,1.25);
+}
+
+@keyframes ninjaDiceReveal {
+
+  0% {
+    opacity: 0;
+    transform:
+      translateY(-35px)
+      scale(.55)
+      rotateY(120deg);
+  }
+
+  65% {
+    opacity: 1;
+    transform:
+      translateY(5px)
+      scale(1.08)
+      rotateY(-10deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform:
+      translateY(0)
+      scale(1)
+      rotateY(0);
+  }
+}
+
+/* =========================================================
+   INDIVIDUAL COLOUR GLOWS
+========================================================= */
+
+#diceStage .die.red {
+  box-shadow:
+    0 0 18px rgba(255,70,70,.65),
+    0 0 40px rgba(255,70,70,.25);
+}
+
+#diceStage .die.blue {
+  box-shadow:
+    0 0 18px rgba(50,150,255,.65),
+    0 0 40px rgba(50,150,255,.25);
+}
+
+#diceStage .die.green {
+  box-shadow:
+    0 0 18px rgba(100,255,70,.65),
+    0 0 40px rgba(100,255,70,.25);
+}
+
+#diceStage .die.yellow {
+  box-shadow:
+    0 0 18px rgba(255,235,40,.65),
+    0 0 40px rgba(255,235,40,.25);
+}
+
+#diceStage .die.orange {
+  box-shadow:
+    0 0 18px rgba(255,150,30,.65),
+    0 0 40px rgba(255,150,30,.25);
+}
+
+#diceStage .die.purple {
+  box-shadow:
+    0 0 18px rgba(180,90,255,.65),
+    0 0 40px rgba(180,90,255,.25);
+}
+
+/* =========================================================
+   ROLL BUTTON
+========================================================= */
+
+#rollBtn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    filter .2s ease;
+}
+
+#rollBtn:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.015);
+  filter: brightness(1.08);
+}
+
+#rollBtn:active:not(:disabled) {
+  transform: scale(.97);
+}
+
+#rollBtn.is-rolling {
+  cursor: wait;
+  animation: rollButtonPulse .8s infinite alternate;
+}
+
+@keyframes rollButtonPulse {
+  from {
+    box-shadow:
+      0 0 15px rgba(255,255,255,.15);
+  }
+
+  to {
+    box-shadow:
+      0 0 35px rgba(255,255,255,.45);
+  }
+}
+
+/* =========================================================
+   SUCCESS STATUS
+========================================================= */
+
+#rollStatus.success {
+  animation: verifiedPulse .55s ease;
+}
+
+@keyframes verifiedPulse {
+  0% {
+    opacity: .4;
+    transform: scale(.96);
+  }
+
+  60% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+#rollStatus.error {
+  animation: errorShake .35s ease;
+}
+
+@keyframes errorShake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-6px);
+  }
+
+  75% {
+    transform: translateX(6px);
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  #diceStage {
+    gap: 9px;
+    min-height: 115px;
+  }
+
+  #diceStage .die {
+    width: clamp(48px, 15vw, 70px);
+    border-radius: 17%;
+  }
+
+  #rollBtn {
+    width: 100%;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+  #diceStage .die,
+  #rollBtn,
+  #rollStatus {
+    animation: none !important;
+    transition: none !important;
+  }
+}
