@@ -387,3 +387,112 @@ body.games-page .site-bg:after{opacity:.12;background-size:48px 48px}
     0 9px 0 rgba(0,0,0,.3),
     inset 0 0 18px rgba(255,255,255,.28);
 }
+/* =========================================================
+   NINJA DICE - REAL DICE LOOK / NUMBER 1
+   ========================================================= */
+
+#diceStage .die {
+  position: relative;
+  width: clamp(62px, 7vw, 92px);
+  height: clamp(62px, 7vw, 92px);
+  aspect-ratio: 1 / 1;
+  border-radius: 18px;
+  border: 3px solid rgba(255,255,255,.95);
+
+  display: grid;
+  place-items: center;
+
+  box-shadow:
+    0 8px 0 rgba(0,0,0,.32),
+    0 0 22px currentColor,
+    inset 0 4px 8px rgba(255,255,255,.38),
+    inset 0 -8px 14px rgba(0,0,0,.18);
+
+  overflow: hidden;
+}
+
+/* Glossy highlight across the dice */
+#diceStage .die::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  right: 8px;
+  height: 24%;
+  border-radius: 14px;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,.55),
+    rgba(255,255,255,0)
+  );
+  pointer-events: none;
+}
+
+/* NUMBER 1 / CENTRE PIP */
+#diceStage .die::after {
+  content: "";
+  position: absolute;
+  width: 23%;
+  height: 23%;
+  min-width: 14px;
+  min-height: 14px;
+  border-radius: 50%;
+
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 5px rgba(255,255,255,.95),
+    0 0 12px rgba(255,255,255,.8),
+    inset 0 2px 3px rgba(0,0,0,.12);
+
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Make the dice colours rich and glossy */
+#diceStage .die.red {
+  background: linear-gradient(145deg,#ff5965 0%,#ff2638 48%,#c91425 100%);
+}
+
+#diceStage .die.blue {
+  background: linear-gradient(145deg,#55b5ff 0%,#1977ff 48%,#0750bd 100%);
+}
+
+#diceStage .die.green {
+  background: linear-gradient(145deg,#a4ff55 0%,#62e600 48%,#3a9c00 100%);
+}
+
+#diceStage .die.yellow {
+  background: linear-gradient(145deg,#fff879 0%,#ffd21a 48%,#d59d00 100%);
+}
+
+#diceStage .die.orange {
+  background: linear-gradient(145deg,#ffb04d 0%,#ff7a00 48%,#c84e00 100%);
+}
+
+#diceStage .die.purple {
+  background: linear-gradient(145deg,#c49aff 0%,#8d5cff 48%,#5930bd 100%);
+}
+
+/* Slight 3D lift */
+#diceStage:not(.is-rolling) .die {
+  transform: translateY(-2px);
+}
+
+/* Keep the dice looking good while rolling */
+#diceStage.is-rolling .die {
+  border-color: rgba(255,255,255,.85);
+}
+
+/* Mobile */
+@media (max-width:700px) {
+  #diceStage .die {
+    width: clamp(50px,15vw,70px);
+    height: clamp(50px,15vw,70px);
+    border-radius: 15px;
+  }
+}
