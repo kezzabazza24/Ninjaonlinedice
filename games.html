@@ -1,56 +1,59 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0a6cff">
-<title>Ninja Online Dice — Games</title>
-<link rel="stylesheet" href="style.css?v=3">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07142f"><title>Ninja Online Dice — Game Zone</title>
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body class="ninja-home theme-classic games-page">
 <div class="site-bg" aria-hidden="true"></div>
 <header class="site-header">
   <a class="brand" href="index.html" aria-label="Ninja Online Dice home"><span class="brand-mark">🥷</span><span><b>NINJA</b><em>ONLINE DICE</em></span></a>
   <nav class="main-nav" aria-label="Main navigation">
-    <a href="index.html">⌂ <span>HOME</span></a>
-    <a href="index.html#how">? <span>HOW TO PLAY</span></a>
-    <a href="verify.html">✓ <span>VERIFY</span></a>
-    <a href="index.html#stats">▥ <span>STATS</span></a>
-    <a class="active" href="games.html">🎮 <span>GAMES</span></a>
-    <a href="https://discord.gg/GRp7Zuck2" target="_blank" rel="noopener">◉ <span>DISCORD</span></a>
+    <a href="index.html">⌂ <span>HOME</span></a><a href="index.html#how">? <span>HOW TO PLAY</span></a><a href="verify.html">✓ <span>VERIFY</span></a><a href="index.html#stats">▥ <span>STATS</span></a><a class="active" href="games.html">🎮 <span>GAMES</span></a><a href="https://discord.gg/GRp7Zuck2" target="_blank" rel="noopener">◉ <span>DISCORD</span></a>
   </nav>
 </header>
 <main class="games-main">
-  <section class="games-hero">
-    <div class="welcome-pill">✦ NINJA GAME ZONE ✦</div>
+  <section class="games-hero arcade-hero">
+    <div class="welcome-pill">✦ NINJA ARCADE · GAME ZONE ✦</div>
     <h1>PLAY <strong>MORE</strong></h1>
-    <p>Quick, simple games you can play while using Ninja Online Dice.</p>
+    <p>Quick neon games. No account needed. Pick a game below and see if you can beat the Ninja.</p>
+    <div class="arcade-stats"><div><span id="totalWins">0</span><small>WINS</small></div><div><span id="totalGames">0</span><small>GAMES</small></div><div><span id="winRate">0%</span><small>WIN RATE</small></div></div>
   </section>
-  <section class="games-grid">
-    <article class="game-panel panel-card">
-      <div class="game-icon">🪙</div><div class="panel-kicker">GAME 01</div><h2>HEADS OR TAILS</h2><p class="muted">Pick a side, then flip the coin.</p>
-      <div class="coin-wrap"><div id="coin" class="coin"><span>?</span></div></div>
-      <div class="choice-row"><button class="game-choice" data-choice="HEADS">HEADS</button><button class="game-choice" data-choice="TAILS">TAILS</button></div>
-      <button id="flipCoin" class="game-action" type="button">✦ FLIP COIN ✦</button>
-      <div id="coinResult" class="game-result">Choose Heads or Tails.</div>
+  <section class="games-grid premium-games">
+    <article class="game-panel arcade-card coin-card">
+      <div class="game-topline"><div class="game-icon big-icon">🪙</div><span class="game-number">GAME 01</span></div>
+      <div class="panel-kicker">LUCK CHALLENGE</div><h2>HEADS <span>OR</span> TAILS</h2><p class="muted">Choose your side. Flip the coin. Beat the odds.</p>
+      <div class="score-line"><span>YOUR SCORE</span><strong id="coinScore">0</strong></div>
+      <div class="coin-wrap premium-coin-wrap"><div id="coin" class="coin premium-coin"><span>?</span><small>NINJA</small></div></div>
+      <div class="choice-row"><button class="game-choice selected" data-choice="HEADS">⬆ HEADS</button><button class="game-choice" data-choice="TAILS">⬇ TAILS</button></div>
+      <button id="flipCoin" class="game-action arcade-action" type="button">✦ FLIP COIN ✦</button>
+      <div id="coinResult" class="game-result">Choose Heads or Tails to start.</div>
     </article>
-    <article class="game-panel panel-card">
-      <div class="game-icon">✊</div><div class="panel-kicker">GAME 02</div><h2>ROCK PAPER SCISSORS</h2><p class="muted">Choose your move and play against Ninja.</p>
-      <div class="rps-display"><span id="playerMove">?</span><b>VS</b><span id="cpuMove">?</span></div>
-      <div class="rps-row"><button data-rps="ROCK">✊ ROCK</button><button data-rps="PAPER">✋ PAPER</button><button data-rps="SCISSORS">✌ SCISSORS</button></div>
+    <article class="game-panel arcade-card rps-card">
+      <div class="game-topline"><div class="game-icon big-icon">⚔️</div><span class="game-number">GAME 02</span></div>
+      <div class="panel-kicker">NINJA BATTLE</div><h2>ROCK <span>PAPER</span> SCISSORS</h2><p class="muted">Choose your move and try to defeat Ninja.</p>
+      <div class="score-line"><span>YOUR SCORE</span><strong id="rpsScore">0</strong></div>
+      <div class="rps-display premium-rps"><div class="fighter"><small>YOU</small><span id="playerMove">?</span></div><b>VS</b><div class="fighter ninja-fighter"><small>NINJA</small><span id="cpuMove">🥷</span></div></div>
+      <div class="rps-row"><button data-rps="ROCK"><span>✊</span> ROCK</button><button data-rps="PAPER"><span>✋</span> PAPER</button><button data-rps="SCISSORS"><span>✌️</span> SCISSORS</button></div>
       <div id="rpsResult" class="game-result">Make your move.</div>
     </article>
   </section>
-  <section class="game-note panel-card"><span>🎮</span><div><b>MORE GAMES COMING</b><p>More quick games can be added here without changing your dice or verification system.</p></div></section>
+  <section class="arcade-footer-panel panel-card">
+    <div><span class="arcade-badge">🎮 ARCADE SCORE</span><h3>Can you beat the Ninja?</h3><p>Your scores are saved only on this device. Reset them whenever you want.</p></div>
+    <button id="resetScores" class="reset-arcade" type="button">↻ RESET SCORES</button>
+  </section>
 </main>
 <footer><div class="footer-brand">🥷 <b>NINJA ONLINE DICE</b></div><span>© 2026 Ninja Online Dice</span><div><a href="index.html">Home</a><a href="verify.html">Verify</a><a href="https://discord.gg/GRp7Zuck2" target="_blank" rel="noopener">Discord</a></div></footer>
 <script>
-const coin=document.querySelector('#coin'), coinResult=document.querySelector('#coinResult');
-let coinChoice='HEADS';
-document.querySelectorAll('.game-choice').forEach(b=>b.addEventListener('click',()=>{coinChoice=b.dataset.choice;document.querySelectorAll('.game-choice').forEach(x=>x.classList.toggle('selected',x===b));coinResult.textContent=`You picked ${coinChoice}.`; }));
-document.querySelector('#flipCoin').addEventListener('click',()=>{coin.classList.add('flip');setTimeout(()=>{const result=Math.random()<.5?'HEADS':'TAILS';coin.querySelector('span').textContent=result;coin.classList.remove('flip');coinResult.textContent=result===coinChoice?`✓ ${result} — YOU WIN!`:`${result} — Try again!`;},650)});
-const moves=['ROCK','PAPER','SCISSORS']; const emoji={ROCK:'✊',PAPER:'✋',SCISSORS:'✌'};
-function winner(a,b){if(a===b)return 'DRAW';if((a==='ROCK'&&b==='SCISSORS')||(a==='PAPER'&&b==='ROCK')||(a==='SCISSORS'&&b==='PAPER'))return 'WIN';return 'LOSE'}
-document.querySelectorAll('[data-rps]').forEach(b=>b.addEventListener('click',()=>{const p=b.dataset.rps,c=moves[Math.floor(Math.random()*3)],r=winner(p,c);document.querySelector('#playerMove').textContent=emoji[p];document.querySelector('#cpuMove').textContent=emoji[c];document.querySelector('#rpsResult').textContent=r==='DRAW'?`DRAW — both chose ${p}.`:r==='WIN'?`✓ YOU WIN — ${p} beats ${c}!`:`Ninja wins — ${c} beats ${p}.`}));
-</script>
-</body></html>
+const state=JSON.parse(localStorage.getItem('ninjaArcadeScore')||'{"wins":0,"games":0,"coinWins":0,"rpsWins":0}');
+const save=()=>{localStorage.setItem('ninjaArcadeScore',JSON.stringify(state));renderScore()};
+const renderScore=()=>{document.querySelector('#totalWins').textContent=state.wins;document.querySelector('#totalGames').textContent=state.games;document.querySelector('#winRate').textContent=state.games?Math.round(state.wins/state.games*100)+'%':'0%';document.querySelector('#coinScore').textContent=state.coinWins;document.querySelector('#rpsScore').textContent=state.rpsWins}; renderScore();
+let coinChoice='HEADS',busy=false;
+document.querySelectorAll('.game-choice').forEach(b=>b.addEventListener('click',()=>{coinChoice=b.dataset.choice;document.querySelectorAll('.game-choice').forEach(x=>x.classList.toggle('selected',x===b));document.querySelector('#coinResult').textContent='You picked '+coinChoice+'. Now flip.'}));
+document.querySelector('#flipCoin').addEventListener('click',()=>{if(busy)return;busy=true;const coin=document.querySelector('#coin');coin.classList.add('flip');document.querySelector('#coinResult').textContent='The Ninja is flipping...';setTimeout(()=>{const result=Math.random()<.5?'HEADS':'TAILS';coin.querySelector('span').textContent=result==='HEADS'?'H':'T';coin.classList.remove('flip');state.games++;if(result===coinChoice){state.wins++;state.coinWins++;document.querySelector('#coinResult').textContent='✓ '+result+' — YOU WIN!'}else document.querySelector('#coinResult').textContent=result+' — Ninja wins this round.';save();busy=false},800)});
+const moves=['ROCK','PAPER','SCISSORS'],emoji={ROCK:'✊',PAPER:'✋',SCISSORS:'✌️'};
+function winner(a,b){if(a===b)return'DRAW';if((a==='ROCK'&&b==='SCISSORS')||(a==='PAPER'&&b==='ROCK')||(a==='SCISSORS'&&b==='PAPER'))return'WIN';return'LOSE'}
+document.querySelectorAll('[data-rps]').forEach(b=>b.addEventListener('click',()=>{const p=b.dataset.rps,c=moves[Math.floor(Math.random()*3)],r=winner(p,c);document.querySelector('#playerMove').textContent=emoji[p];document.querySelector('#cpuMove').textContent=emoji[c];state.games++;if(r==='WIN'){state.wins++;state.rpsWins++;document.querySelector('#rpsResult').textContent='✓ YOU WIN — '+p+' beats '+c+'!'}else if(r==='DRAW')document.querySelector('#rpsResult').textContent='DRAW — both chose '+p+'.';else document.querySelector('#rpsResult').textContent='Ninja wins — '+c+' beats '+p+'.';save()}));
+document.querySelector('#resetScores').addEventListener('click',()=>{state.wins=state.games=state.coinWins=state.rpsWins=0;save();document.querySelector('#coinResult').textContent='Scores reset. Choose a side.';document.querySelector('#rpsResult').textContent='Scores reset. Make your move.'});
+</script></body></html>
