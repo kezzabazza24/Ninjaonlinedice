@@ -541,7 +541,7 @@ rollBtn?.addEventListener("click", async () => {
       }, 3000);
     }
 
-  } finally {
+   finally {
 
     rollBtn.disabled = false;
     rollBtn.classList.remove("is-rolling");
