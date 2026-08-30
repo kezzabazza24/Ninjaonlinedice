@@ -1092,3 +1092,68 @@ footer{max-width:1100px;margin:auto;padding:28px 20px 38px;border-top:1px solid 
 .vip-member-row div{display:flex;flex-direction:column;gap:3px}
 .vip-member-row div small + small{color:#8fffae}
 .vip-eliminator-hidden{display:none!important}
+
+
+/* ===== VIP PREMIUM SPACE / PRIVACY FINISH ===== */
+.vip-body.vip-neon{
+  position:relative;
+  overflow-x:hidden;
+  background:
+    radial-gradient(circle at 50% 10%,rgba(98,38,255,.28),transparent 24%),
+    radial-gradient(circle at 12% 48%,rgba(0,174,255,.16),transparent 23%),
+    radial-gradient(circle at 88% 48%,rgba(255,45,116,.15),transparent 23%),
+    radial-gradient(circle at 50% 90%,rgba(141,42,255,.20),transparent 30%),
+    #02030a!important;
+}
+.vip-body.vip-neon:before{
+  content:"";position:fixed;inset:82px 0 0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(circle at 8% 18%,#fff 0 1px,transparent 2px),
+    radial-gradient(circle at 17% 72%,#bfa4ff 0 1px,transparent 2px),
+    radial-gradient(circle at 29% 34%,#fff 0 1px,transparent 2px),
+    radial-gradient(circle at 41% 78%,#ffd86a 0 1px,transparent 2px),
+    radial-gradient(circle at 53% 22%,#fff 0 1px,transparent 2px),
+    radial-gradient(circle at 66% 68%,#c9b2ff 0 1px,transparent 2px),
+    radial-gradient(circle at 78% 30%,#fff 0 1px,transparent 2px),
+    radial-gradient(circle at 91% 76%,#ffd86a 0 1px,transparent 2px);
+  background-size:240px 190px,310px 260px,190px 230px,340px 280px,280px 220px,230px 300px,360px 250px,270px 210px;
+  opacity:.75;animation:vipStars 18s linear infinite;
+}
+.vip-body.vip-neon:after{
+  content:"✦   ✧   ✦   ✧   ✦";position:fixed;left:0;right:0;bottom:8px;text-align:center;
+  color:#d6b8ff;font-size:20px;letter-spacing:24px;text-shadow:0 0 12px #a34dff;opacity:.35;pointer-events:none;z-index:0;
+}
+@keyframes vipStars{from{transform:translateY(0)}to{transform:translateY(55px)}}
+.vip-space-decor{position:fixed;inset:82px 0 0;pointer-events:none;z-index:0;overflow:hidden}
+.vip-ninja{position:absolute;font-size:clamp(80px,10vw,150px);opacity:.11;filter:drop-shadow(0 0 24px #7e4dff);animation:ninjaFloat 5s ease-in-out infinite}
+.ninja-left{left:-18px;top:28%;transform:rotate(-8deg)}
+.ninja-right{right:-18px;top:54%;transform:scaleX(-1) rotate(-8deg);animation-delay:-2.5s}
+@keyframes ninjaFloat{50%{translate:0 -10px;opacity:.17}}
+.vip-page,.vip-topbar{position:relative;z-index:2}
+.vip-verified-card,.vip-dice-card,.vip-status-card,.vip-privacy,.vip-active,.vip-live-card{
+  box-shadow:0 0 28px rgba(155,63,255,.14),inset 0 0 28px rgba(92,40,155,.08)!important;
+}
+.vip-room-title{text-shadow:0 0 16px #a451ff,0 0 34px rgba(194,72,255,.45)!important}
+.vip-code code{text-shadow:0 0 12px #ffe239,0 0 28px rgba(255,216,57,.45)!important}
+.vip-dice-card{background:radial-gradient(circle at 50% 45%,rgba(106,44,180,.18),transparent 48%),rgba(3,4,13,.86)!important}
+.vip-neon .die{transition:filter .2s,opacity .2s,transform .2s}
+.vip-dice-card.vip-privacy-on .dice-stage{
+  filter:blur(6px) saturate(.82) brightness(.78)!important;
+  opacity:.86;
+}
+.vip-dice-card.vip-privacy-on .die{box-shadow:0 0 16px currentColor,0 0 34px currentColor!important}
+.vip-dice-card.vip-privacy-on:after{
+  content:"🔒 PRIVACY / BLUR — COLOURS REMAIN VISIBLE";display:block;margin:-4px auto 8px;
+  width:max-content;max-width:92%;padding:5px 12px;border-radius:999px;
+  color:#e6d9ff;font-size:10px;font-weight:900;letter-spacing:1px;
+  border:1px solid rgba(183,112,255,.45);background:rgba(10,5,24,.55);text-shadow:0 0 8px #8c4cff;
+}
+.vip-privacy input:checked+i{background:#7dff35!important;box-shadow:0 0 16px rgba(125,255,53,.6)!important}
+.vip-privacy input:checked+i:before{background:#f7fff2!important}
+.vip-label{text-shadow:0 0 12px #a451ff,0 0 26px rgba(207,90,255,.4)!important}
+.vip-neon #vipRollBtn{background:linear-gradient(90deg,#18082b,#34105b,#18082b)!important;border-color:#d45cff!important;box-shadow:0 0 18px #d43cff,0 0 42px rgba(210,55,255,.35)!important}
+.vip-neon #vipRollBtn:not(:disabled):hover{transform:translateY(-2px) scale(1.02);box-shadow:0 0 24px #ed5cff,0 0 55px rgba(210,55,255,.45)!important}
+.vip-neon #vipRollBtn:disabled{opacity:.75;cursor:wait}
+@media(max-width:700px){
+ .vip-space-decor{inset:70px 0 0}.vip-ninja{font-size:80px}.vip-body.vip-neon:after{letter-spacing:10px;font-size:14px}
+}
