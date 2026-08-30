@@ -1158,7 +1158,6 @@ footer{max-width:1100px;margin:auto;padding:28px 20px 38px;border-top:1px solid 
  .vip-space-decor{inset:70px 0 0}.vip-ninja{font-size:80px}.vip-body.vip-neon:after{letter-spacing:10px;font-size:14px}
 }
 
-
 /* ===== TIKTOK DICE USERS — HOME SCREEN SIDE PANELS ===== */
 .hero-layout{
   width:min(1500px,100%);
@@ -1170,129 +1169,51 @@ footer{max-width:1100px;margin:auto;padding:28px 20px 38px;border-top:1px solid 
   position:relative;
   z-index:3;
 }
-.hero-core{
-  min-width:0;
-  text-align:center;
-}
+.hero-core{min-width:0;text-align:center}
 .tiktok-streamers{
   margin-top:54px;
   padding:13px 11px 12px;
   border:1px solid rgba(167,112,255,.48);
   border-radius:18px;
-  background:
-    linear-gradient(180deg,rgba(16,11,31,.93),rgba(5,8,18,.88));
-  box-shadow:
-    0 0 24px rgba(101,47,255,.18),
-    inset 0 0 28px rgba(69,140,255,.05);
+  background:linear-gradient(180deg,rgba(16,11,31,.93),rgba(5,8,18,.88));
+  box-shadow:0 0 24px rgba(101,47,255,.18),inset 0 0 28px rgba(69,140,255,.05);
   backdrop-filter:blur(7px);
 }
 .streamer-panel-title{
-  font-size:14px;
-  font-weight:900;
-  letter-spacing:1.4px;
-  color:#f7f4ff;
-  text-shadow:0 0 10px rgba(255,70,70,.45);
+  font-size:14px;font-weight:900;letter-spacing:1.2px;color:#f7f4ff;
+  text-shadow:0 0 10px rgba(255,70,70,.45)
 }
-.streamer-panel-sub{
-  margin:5px 0 10px;
-  font-size:10px;
-  letter-spacing:.8px;
-  color:#9faac4;
-}
+.streamer-panel-sub{margin:5px 0 10px;font-size:10px;letter-spacing:.8px;color:#9faac4}
 .streamer-card{
-  display:grid;
-  grid-template-columns:42px minmax(0,1fr) auto;
-  align-items:center;
-  gap:8px;
-  min-height:58px;
-  margin:7px 0;
-  padding:7px;
-  border:1px solid rgba(255,255,255,.11);
-  border-radius:12px;
-  background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(80,46,130,.10));
-  text-decoration:none;
-  color:#fff;
-  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
+  display:grid;grid-template-columns:42px minmax(0,1fr) auto;align-items:center;gap:8px;
+  min-height:58px;margin:7px 0;padding:7px;border:1px solid rgba(255,255,255,.11);
+  border-radius:12px;background:linear-gradient(135deg,rgba(255,255,255,.055),rgba(80,46,130,.10));
+  text-decoration:none;color:#fff;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease
 }
-.streamer-card:hover{
-  transform:translateY(-2px);
-  border-color:rgba(180,116,255,.72);
-  box-shadow:0 0 18px rgba(153,72,255,.28);
-}
+.streamer-card:hover{transform:translateY(-2px);border-color:rgba(180,116,255,.72);box-shadow:0 0 18px rgba(153,72,255,.28)}
 .streamer-avatar{
-  width:40px;
-  height:40px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  border:2px solid #ff4c69;
-  background:radial-gradient(circle at 35% 30%,#5d7cff,#15152d 68%);
-  color:#fff;
-  font-size:11px;
-  font-weight:900;
-  box-shadow:0 0 13px rgba(255,58,91,.45);
+  width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:50%;
+  border:2px solid #ff4c69;background:radial-gradient(circle at 35% 30%,#5d7cff,#15152d 68%);
+  color:#fff;font-size:11px;font-weight:900;box-shadow:0 0 13px rgba(255,58,91,.45)
 }
-.streamer-details{
-  min-width:0;
-  text-align:left;
-}
-.streamer-details strong{
-  display:block;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  font-size:12px;
-  letter-spacing:.2px;
-}
-.streamer-details small{
-  display:block;
-  margin-top:3px;
-  color:#9ef4c0;
-  font-size:8px;
-  letter-spacing:.8px;
-  font-weight:800;
-}
+.streamer-details{min-width:0;text-align:left}
+.streamer-details strong{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12px}
+.streamer-details small{display:block;margin-top:3px;color:#9ef4c0;font-size:8px;letter-spacing:.6px;font-weight:800}
 .streamer-status{
-  padding:4px 6px;
-  border:1px solid rgba(255,82,105,.58);
-  border-radius:999px;
-  color:#ff8295;
-  background:rgba(255,42,73,.08);
-  font-size:7px;
-  font-weight:900;
-  letter-spacing:.7px;
+  padding:4px 6px;border:1px solid rgba(255,82,105,.58);border-radius:999px;color:#ff8295;
+  background:rgba(255,42,73,.08);font-size:7px;font-weight:900;letter-spacing:.7px
 }
-.tiktok-left{justify-self:stretch}
-.tiktok-right{justify-self:stretch}
-
 @media(max-width:1050px){
-  .hero-layout{
-    grid-template-columns:1fr;
-    max-width:850px;
-  }
+  .hero-layout{grid-template-columns:1fr;max-width:850px}
   .hero-core{grid-row:1}
   .tiktok-left,.tiktok-right{
-    margin-top:0;
-    width:100%;
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:8px;
-    align-items:center;
+    margin-top:0;width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px
   }
-  .streamer-panel-title,.streamer-panel-sub{
-    grid-column:1/-1;
-  }
+  .streamer-panel-title,.streamer-panel-sub{grid-column:1/-1}
   .streamer-card{margin:0}
 }
 @media(max-width:600px){
-  .tiktok-left,.tiktok-right{
-    grid-template-columns:1fr;
-  }
-  .streamer-panel-title,.streamer-panel-sub{
-    grid-column:auto;
-  }
+  .tiktok-left,.tiktok-right{grid-template-columns:1fr}
+  .streamer-panel-title,.streamer-panel-sub{grid-column:auto}
   .hero-layout{gap:10px}
-  .tiktok-streamers{padding:10px}
-  .streamer-card{min-height:54px}
 }

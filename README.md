@@ -35,7 +35,3 @@ Added `vip.html` and `vip.js` for The RuleBreaker VIP design. For secure VIP log
 5. Each authorised VIP account can sign into `vip.html` and sees their own personalised VIP name/page.
 
 The VIP member list is stored in `vip_members`; only the authorised control account can add or remove members.
-
-
-### TikTok Dice Users
-The home page now shows the four supplied TikTok dice users in neon side panels. Each card links to the user's TikTok profile. The cards are intentionally not marked LIVE automatically because TikTok does not provide a dependable public browser-side live-status feed without an appropriate API/integration.
