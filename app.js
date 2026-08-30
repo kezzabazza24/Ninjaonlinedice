@@ -291,37 +291,103 @@ async function loadStats() {
 --------------------------------------------------------- */
 
 rollBtn?.addEventListener("click", async () => {
-
   if (rolling) return;
 
   rolling = true;
-
   rollBtn.disabled = true;
   rollBtn.classList.add("is-rolling");
   rollBtn.textContent = "🎲 ROLLING...";
 
-  const rollStatus =
-    document.querySelector("#rollStatus");
+  const status = document.querySelector("#rollStatus");
 
-  const code =
-    document.querySelector("#code");
+  status.classList.remove("success", "error");
+  status.textContent = "Rolling your dice...";
 
-  if (rollStatus) {
-    rollStatus.textContent =
-      "Rolling your dice...";
-  }
-
-  if (code) {
-    code.textContent =
-      "ROLLING…";
-  }
-
-  if (stage) {
-    stage.classList.add("is-rolling");
-  }
-
+  document.querySelector("#code").textContent = "GENERATING...";
+  
+  stage.classList.add("is-rolling");
   playRollSound();
 
+  // Rapid random preview colours
+  const animationStart = Date.now();
+  const animationDuration = 1500;
+
+  while (Date.now() - animationStart < animationDuration) {
+    renderDice(
+      Array.from({ length: diceCount }, secureColour())
+        .map(c => c),
+      true
+    );
+
+    // Gradually slow the colour changes
+    const elapsed = Date.now() - animationStart;
+    const progress = elapsed / animationDuration;
+
+    const delay =
+      progress < 0.55 ? 55 :
+      progress < 0.75 ? 80 :
+      progress < 0.9 ? 120 :
+      180;
+
+    await wait(delay);
+  }
+
+  // Ask Supabase for the REAL result
+  status.textContent = "Saving verified result…";
+  document.querySelector("#code").textContent = "SAVING...";
+
+  const { data, error } = await db.functions.invoke(
+    "create-roll",
+    {
+      body: { diceCount }
+    }
+  );
+
+  stage.classList.remove("is-rolling");
+
+  const saved =
+    data &&
+    data.code &&
+    Array.isArray(data.colours);
+
+  if (saved) {
+    // IMPORTANT:
+    // Supabase remains authoritative.
+    // We only reveal the result returned by the server.
+    renderDice(data.colours);
+
+    document.querySelector("#code").textContent = data.code;
+
+    savePersonalRoll(data);
+
+    status.textContent =
+      "✓ Roll complete and saved as a verified result.";
+
+    status.classList.remove("error");
+    status.classList.add("success");
+  } else {
+    document.querySelector("#code").textContent =
+      "ROLL FAILED";
+
+    status.textContent =
+      "⚠ Roll completed, but the verified result could not be saved.";
+
+    status.classList.remove("success");
+    status.classList.add("error");
+  }
+
+  document.querySelector("#sessionRolls").textContent =
+    playCount();
+
+  rollBtn.disabled = false;
+  rollBtn.classList.remove("is-rolling");
+  rollBtn.textContent = `✦ ROLL ${diceCount} DICE ✦`;
+
+  rolling = false;
+
+  renderPersonalRolls();
+  loadStats();
+});
   /* -----------------------------------------------
      VISUAL ROLL
   ----------------------------------------------- */
