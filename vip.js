@@ -20,7 +20,8 @@ async function refreshAccess(){
    return false;
  }
  currentVip=member;
- document.querySelectorAll("[data-vip-name]").forEach(el=>el.textContent=member.display_name);
+ document.querySelectorAll("[data-vip-name]").forEach(el=>el.textContent=member.display_name || "VIP MEMBER");
+ document.title = `${member.display_name || "VIP Member"} | Ninja Online Dice`;
  const colourControls=$(".vip-colour-controls");
  if(colourControls) colourControls.classList.toggle("vip-eliminator-hidden", member.show_colour_eliminator !== true);
  $("#vipLoginPanel").classList.add("hidden");
