@@ -3,16 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#050816">
-<title>Ninja Online Dice — Verified Random Rolls</title>
+<meta name="theme-color" content="#eaf6ff">
+<title>Ninja Online Dice — Fair. Random. Verified.</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body class="ninja-home">
-<div class="bg-grid" aria-hidden="true"></div>
-<div class="bg-glow glow-a" aria-hidden="true"></div>
-<div class="bg-glow glow-b" aria-hidden="true"></div>
-<div class="ninja-watermark ninja-left" aria-hidden="true">🥷</div>
-<div class="ninja-watermark ninja-right" aria-hidden="true">🥷</div>
+<body class="ninja-home theme-classic">
+<div class="site-bg" aria-hidden="true"></div>
 
 <header class="site-header">
   <a class="brand" href="index.html" aria-label="Ninja Online Dice home">
@@ -20,99 +16,123 @@
     <span><b>NINJA</b><em>ONLINE DICE</em></span>
   </a>
   <nav class="main-nav" aria-label="Main navigation">
-    <a class="active" href="#play"><span>⌂</span> HOME</a>
-    <a href="#how"><span>?</span> HOW TO PLAY</a>
-    <a href="verify.html"><span>✓</span> VERIFY</a>
-    <a href="#stats"><span>🏆</span> STATS</a>
-    <a href="https://discord.gg/bdRngBD5R" target="_blank" rel="noopener"><span>🎮</span> DISCORD</a>
+    <a class="active" href="#play">⌂ <span>HOME</span></a>
+    <a href="#how">? <span>HOW TO PLAY</span></a>
+    <a href="verify.html">✓ <span>VERIFY</span></a>
+    <a href="#stats">▥ <span>STATS</span></a>
+    <a href="https://discord.gg/bdRngBD5R" target="_blank" rel="noopener">◉ <span>DISCORD</span></a>
   </nav>
 </header>
 
 <main>
-<section class="hero" id="play">
-  <div class="hero-topline"><span>⚡ VERIFIED RANDOM ROLLS</span><span>LIVE • FAIR • CHECKABLE</span></div>
-  <div class="hero-layout">
-    <aside class="community-panel left-panel">
-      <div class="side-heading"><span class="live-dot"></span> DICE COMMUNITY</div>
-      <p>Players using Ninja Dice</p>
-      <a class="player-card" href="https://www.tiktok.com/@king_bob32110" target="_blank" rel="noopener"><span class="avatar">KB</span><span><b>@king_bob32110</b><small>🎲 NINJA DICE</small></span><i>TIKTOK</i></a>
-      <a class="player-card" href="https://www.tiktok.com/@xryc_1" target="_blank" rel="noopener"><span class="avatar">XR</span><span><b>@xryc_1</b><small>🎲 NINJA DICE</small></span><i>TIKTOK</i></a>
+  <section class="dashboard-shell" id="play">
+    <aside class="theme-panel panel-card">
+      <div class="panel-kicker">PERSONALISE YOUR GAME</div>
+      <h2>Choose your background</h2>
+      <p class="muted">Pick a look for your session. Your choice is saved on this device.</p>
+      <div class="theme-options" id="themeOptions">
+        <button class="theme-option active" data-theme="classic" type="button"><span class="theme-thumb classic-thumb"></span><b>CLASSIC BLUE</b><i>✓</i></button>
+        <button class="theme-option" data-theme="grid" type="button"><span class="theme-thumb grid-thumb"></span><b>NEON GRID</b><i>○</i></button>
+        <button class="theme-option" data-theme="space" type="button"><span class="theme-thumb space-thumb"></span><b>SPACE</b><i>○</i></button>
+        <button class="theme-option" data-theme="cyber" type="button"><span class="theme-thumb cyber-thumb"></span><b>CYBER CITY</b><i>○</i></button>
+        <button class="theme-option" data-theme="forest" type="button"><span class="theme-thumb forest-thumb"></span><b>FOREST</b><i>○</i></button>
+        <button class="theme-option" data-theme="sunset" type="button"><span class="theme-thumb sunset-thumb"></span><b>SUNSET</b><i>○</i></button>
+        <button class="theme-option" data-theme="dark" type="button"><span class="theme-thumb dark-thumb"></span><b>DARK MODE</b><i>○</i></button>
+        <button class="theme-option" data-theme="ocean" type="button"><span class="theme-thumb ocean-thumb"></span><b>OCEAN</b><i>○</i></button>
+      </div>
+      <button id="randomTheme" class="secondary-btn" type="button">⤨ RANDOM BACKGROUND</button>
     </aside>
 
-    <section class="game-core" aria-label="Ninja Online Dice game">
-      <div class="title-lockup"><span>THE HOME OF VERIFIED RANDOM ROLLS</span><h1>NINJA <strong>ONLINE DICE</strong></h1><p>CHOOSE YOUR COLOUR • ROLL • VERIFY</p></div>
-      <div class="game-card">
-        <div class="dice-label">THIS ROLL</div>
-        <div class="dice-wrap">
-          <div id="diceStage" class="dice-stage" aria-label="Four colour dice"></div>
-          <div id="privacy" class="privacy"><strong>PRIVACY / BLUR MODE</strong><small>Colours remain faintly visible</small></div>
+    <section class="game-area" aria-label="Ninja Online Dice game">
+      <div class="welcome-pill">✦ FAIR • RANDOM • VERIFIED ✦</div>
+      <div class="brand-hero"><h1>NINJA</h1><strong>ONLINE DICE</strong><p>Simple, secure colour dice — roll it, record it, verify it.</p></div>
+
+      <section class="game-card panel-card">
+        <div class="game-card-head"><div><span class="panel-kicker">YOUR LIVE ROLL</span><h2>ROLL YOUR DICE</h2></div><span class="live-badge"><i></i> LIVE</span></div>
+
+        <div class="dice-count-label">SELECT NUMBER OF DICE</div>
+        <div class="dice-count" id="diceCount" role="group" aria-label="Select number of dice">
+          <button type="button" data-count="1">1</button><button type="button" data-count="2">2</button><button type="button" data-count="3">3</button><button class="selected" type="button" data-count="4">4</button><button type="button" data-count="5">5</button><button type="button" data-count="6">6</button>
         </div>
+
+        <div class="dice-stage-wrap">
+          <div class="dice-label">THIS ROLL</div>
+          <div id="diceStage" class="dice-stage" aria-live="polite" aria-label="Dice result"></div>
+          <div id="privacy" class="privacy"><span>◌</span><b>PRIVACY BLUR</b><small>Colours remain visible</small></div>
+        </div>
+
         <button id="rollBtn" class="roll-main" type="button">✦ ROLL 4 DICE ✦</button>
+
         <div class="verification-strip">
           <div><small>YOUR VERIFICATION ID</small><code id="code">ROLL TO GENERATE</code></div>
           <div class="verification-actions"><button id="copyBtn" type="button">COPY</button><a href="verify.html">VERIFY →</a></div>
         </div>
         <div id="rollStatus" class="roll-status" aria-live="polite"></div>
+      </section>
+
+      <div class="feature-strip">
+        <div><span>🛡</span><b>FAIR</b><small>Secure random rolls</small></div>
+        <div><span>✓</span><b>VERIFIABLE</b><small>Every roll has a code</small></div>
+        <div><span>⚡</span><b>INSTANT</b><small>Results in real time</small></div>
+        <div><span>🔒</span><b>PRIVATE</b><small>Your history stays local</small></div>
       </div>
     </section>
 
-    <aside class="community-panel right-panel">
-      <div class="side-heading"><span class="live-dot"></span> DICE COMMUNITY</div>
-      <p>Players using Ninja Dice</p>
-      <a class="player-card" href="https://www.tiktok.com/@user124524rij" target="_blank" rel="noopener"><span class="avatar">UR</span><span><b>@user124524rij</b><small>🎲 NINJA DICE</small></span><i>TIKTOK</i></a>
-      <a class="player-card" href="https://www.tiktok.com/@itsyaboybren" target="_blank" rel="noopener"><span class="avatar">IB</span><span><b>@itsyaboybren</b><small>🎲 NINJA DICE</small></span><i>TIKTOK</i></a>
+    <aside class="side-info">
+      <section class="panel-card info-card">
+        <div class="panel-kicker">QUICK GUIDE</div>
+        <h2>How it works</h2>
+        <div class="steps"><div><b>01</b><span>Choose how many dice you want to roll.</span></div><div><b>02</b><span>Hit roll and get your colours instantly.</span></div><div><b>03</b><span>Copy the verification ID to check the result later.</span></div></div>
+      </section>
+      <section class="panel-card session-card">
+        <div class="panel-kicker">YOUR SESSION</div>
+        <h2>Live session</h2>
+        <div class="session-row"><span>ROLLS THIS SESSION</span><b id="sessionRolls">0</b></div>
+        <div class="session-row"><span>PLAYERS ONLINE</span><b id="activePlayers">—</b></div>
+        <a class="discord-mini" href="https://discord.gg/bdRngBD5R" target="_blank" rel="noopener">◉ JOIN DISCORD</a>
+      </section>
     </aside>
-  </div>
-</section>
-
-<section class="control-row" id="how">
-  <article class="control-card privacy-card">
-    <div class="control-icon">🛡</div><div><h2>ANTI-BAN / PRIVACY</h2><p>Blur the dice while keeping the colours visible.</p></div>
-    <label class="switch"><input id="privacyToggle" type="checkbox"><span></span></label>
-  </article>
-  <article class="control-card counter-card">
-    <div class="control-icon">＋</div><div class="counter-copy"><h2>PICK COUNTER</h2><p>Track your own picks this session.</p></div>
-    <div class="counter-grid"><button id="scoreMinus10" type="button">−10</button><button id="scoreMinus" type="button">−1</button><output id="scoreValue">0</output><button id="scorePlus" type="button">+1</button><button id="scorePlus10" type="button">+10</button><button id="scoreReset" class="reset" type="button">RESET</button></div>
-  </article>
-  <article class="control-card online-card">
-    <div class="control-icon">●</div><div><h2>LIVE PLAYERS</h2><p>Players currently connected</p><strong><span id="activePlayers">—</span> ONLINE</strong></div>
-  </article>
-</section>
-
-<section class="info-grid">
-  <section class="panel history" id="history">
-    <div class="panel-heading"><div><span>YOUR HISTORY</span><h2>RECENT 20 ROLLS</h2></div><a href="verify.html">VERIFY A CODE →</a></div>
-    <p class="panel-note">Only the rolls saved on this device are shown here.</p>
-    <div class="roll-table-head"><span>TIME</span><span>COLOURS</span><span>VERIFICATION</span></div>
-    <div id="rollHistory" class="roll-history">No rolls yet — your last 20 rolls will appear here.</div>
   </section>
 
-  <section class="panel quick-verify">
-    <div class="panel-heading"><div><span>PUBLIC CHECKER</span><h2>VERIFY ANY ROLL</h2></div><b class="shield">✓</b></div>
-    <p>Enter a verification ID to independently check the saved result.</p>
-    <div class="verify-input"><input id="quickVerifyCode" placeholder="NINJA-XXXXX-XXXXX" autocomplete="off"><button id="quickVerifyBtn" type="button">VERIFY</button></div>
-    <div id="quickVerifyResult" class="quick-result"></div>
-    <div class="how-list"><div><b>01</b><span>Roll the four dice.</span></div><div><b>02</b><span>Copy your unique verification ID.</span></div><div><b>03</b><span>Use VERIFY to check the result at any time.</span></div></div>
+  <section class="lower-grid" id="how">
+    <section class="panel-card history" id="history">
+      <div class="panel-heading"><div><span class="panel-kicker">YOUR DEVICE</span><h2>LAST 20 ROLLS</h2></div><a href="verify.html">VERIFY A CODE →</a></div>
+      <p class="panel-note">Only your rolls saved on this device appear here. Verification codes are shown so you can check previous results.</p>
+      <div class="roll-table-head"><span>TIME</span><span>COLOURS</span><span>VERIFICATION</span></div>
+      <div id="rollHistory" class="roll-history">No rolls yet — your last 20 rolls will appear here.</div>
+    </section>
+
+    <section class="panel-card counter-card">
+      <div class="panel-kicker">YOUR PICKS</div><h2>Pick Counter</h2><p class="muted">Keep track of correct or incorrect picks during your session.</p>
+      <div class="big-counter"><button id="scoreMinus10" type="button">−10</button><button id="scoreMinus" type="button">−1</button><output id="scoreValue">0</output><button id="scorePlus" type="button">+1</button><button id="scorePlus10" type="button">+10</button></div>
+      <button id="scoreReset" class="reset-btn" type="button">RESET COUNTER</button>
+    </section>
+
+    <section class="panel-card quick-verify">
+      <div class="panel-kicker">PUBLIC CHECKER</div><h2>Verify any roll</h2><p class="muted">Enter a verification ID to check a saved result.</p>
+      <div class="verify-input"><input id="quickVerifyCode" placeholder="NINJA-XXXXX-XXXXX" autocomplete="off"><button id="quickVerifyBtn" type="button">VERIFY</button></div>
+      <div id="quickVerifyResult" class="quick-result"></div>
+    </section>
   </section>
-</section>
 
-<section class="stats-section" id="stats">
-  <div class="section-title"><span>LIVE SYSTEM</span><h2>NINJA DICE <strong>STATUS</strong></h2></div>
-  <div class="stats-grid">
-    <article><span>🎲</span><small>VERIFIED ROLLS</small><b id="totalRolls">—</b><em>ALL TIME</em></article>
-    <article><span>◷</span><small>ROLLS TODAY</small><b id="rollsToday">—</b><em>LIVE COUNTER</em></article>
-    <article><span>●</span><small>ONLINE NOW</small><b id="onlineStat">—</b><em>CONNECTED</em></article>
-    <article><span>◆</span><small>DICE PER ROLL</small><b>4</b><em>RANDOM COLOURS</em></article>
-    <article><span>✓</span><small>VERIFICATION</small><b>100%</b><em>CHECKABLE</em></article>
-  </div>
-</section>
+  <section class="stats-section" id="stats">
+    <div class="section-title"><span class="panel-kicker">LIVE SYSTEM</span><h2>NINJA DICE <strong>STATUS</strong></h2></div>
+    <div class="stats-grid">
+      <article><span>🎲</span><small>VERIFIED ROLLS</small><b id="totalRolls">—</b><em>ALL TIME</em></article>
+      <article><span>◷</span><small>ROLLS TODAY</small><b id="rollsToday">—</b><em>LIVE COUNTER</em></article>
+      <article><span>●</span><small>ONLINE NOW</small><b id="onlineStat">—</b><em>CONNECTED</em></article>
+      <article><span>◆</span><small>DICE PER ROLL</small><b id="diceStat">4</b><em>YOUR CURRENT CHOICE</em></article>
+      <article><span>✓</span><small>VERIFICATION</small><b>100%</b><em>CHECKABLE</em></article>
+    </div>
+  </section>
 
-<section class="discord-banner">
-  <div><span>COMMUNITY HUB</span><h2>JOIN THE NINJA DICE DISCORD</h2><p>Updates, notifications, community chat and more.</p></div>
-  <a href="https://discord.gg/bdRngBD5R" target="_blank" rel="noopener">🎮 JOIN DISCORD</a>
-</section>
+  <section class="discord-banner">
+    <div><span>COMMUNITY HUB</span><h2>ROLL TOGETHER WITH NINJA DICE</h2><p>Join the community for updates, chat and announcements.</p></div>
+    <a href="https://discord.gg/bdRngBD5R" target="_blank" rel="noopener">◉ JOIN DISCORD</a>
+  </section>
 </main>
 
-<footer><div class="footer-brand">🥷 <b>NINJA ONLINE DICE</b></div><span>© 2026 Ninja Online Dice</span><span>18+ | Play responsibly</span><div><a href="#how">How to play</a><a href="verify.html">Verify</a><a href="https://discord.gg/bdRngBD5R" target="_blank" rel="noopener">Discord</a></div></footer>
+<footer><div class="footer-brand">🥷 <b>NINJA ONLINE DICE</b></div><span>© 2026 Ninja Online Dice</span><span>Fair • Random • Verified</span><div><a href="#how">How to play</a><a href="verify.html">Verify</a><a href="https://discord.gg/bdRngBD5R" target="_blank" rel="noopener">Discord</a></div></footer>
 <script type="module" src="app.js"></script>
-</body></html>
+</body>
+</html>
