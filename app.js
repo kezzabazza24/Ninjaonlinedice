@@ -540,7 +540,7 @@ rollBtn?.addEventListener("click", async () => {
         rollStatus.classList.remove("error");
       }, 3000);
     }
-
+  }
    finally {
 
     rollBtn.disabled = false;
