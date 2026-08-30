@@ -5,6 +5,7 @@ create table if not exists public.vip_members (
   user_id uuid primary key references auth.users(id) on delete cascade,
   display_name text not null,
   page_slug text not null unique,
+  show_colour_eliminator boolean not null default false,
   created_at timestamptz not null default now()
 );
 
@@ -26,3 +27,14 @@ with check (public.is_admin());
 -- or run:
 -- insert into public.vip_members (user_id, display_name, page_slug)
 -- values ('USER-UUID-HERE', 'THE RULEBREAKER', 'therulebreaker');
+
+
+-- Add the per-VIP colour eliminator setting to an existing installation.
+alter table public.vip_members
+  add column if not exists show_colour_eliminator boolean not null default false;
+
+-- Keep the original VIP member's eliminator enabled.
+-- New VIP members added from VIP CONTROL will default to hidden.
+update public.vip_members
+set show_colour_eliminator = true
+where lower(page_slug) = 'therulebreaker';

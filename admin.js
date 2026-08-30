@@ -8,7 +8,7 @@ async function loadVipMembers(){
   const {data,error}=await db.from("vip_members").select("*").order("created_at",{ascending:true});
   if(error){box.textContent="VIP members could not load. Run supabase-vip-members.sql first.";return}
   box.innerHTML=data.length?data.map(m=>`<div class="vip-member-row">
-    <div><b>${m.display_name}</b><small>/${m.page_slug} · ${m.user_id}</small></div>
+    <div><b>${m.display_name}</b><small>/${m.page_slug} · ${m.user_id}</small><small>${m.show_colour_eliminator ? "Colour eliminator: ON" : "Colour eliminator: OFF"}</small></div>
     <button class="remove-vip" data-id="${m.user_id}">REMOVE</button>
   </div>`).join(""):"<p class='muted'>No VIP members yet.</p>";
   document.querySelectorAll(".remove-vip").forEach(b=>b.onclick=async()=>{
@@ -92,10 +92,11 @@ $("#addVipBtn")?.addEventListener("click",async()=>{
   const user_id=$("#vipUserId").value.trim();
   const display_name=$("#vipDisplayName").value.trim();
   const page_slug=$("#vipSlug").value.trim().toLowerCase().replace(/[^a-z0-9-]/g,"");
+  const show_colour_eliminator=$("#vipShowEliminator")?.checked ?? false;
   if(!user_id||!display_name||!page_slug){$("#vipMemberMessage").textContent="Please enter the UUID, display name and page slug.";return}
   $("#vipMemberMessage").textContent="Adding VIP member…";
-  const {error}=await db.from("vip_members").insert({user_id,display_name,page_slug});
+  const {error}=await db.from("vip_members").insert({user_id,display_name,page_slug,show_colour_eliminator});
   $("#vipMemberMessage").textContent=error?error.message:"VIP member added successfully.";
-  if(!error){$("#vipUserId").value="";$("#vipDisplayName").value="";$("#vipSlug").value="";loadVipMembers()}
+  if(!error){$("#vipUserId").value="";$("#vipDisplayName").value="";$("#vipSlug").value="";if($("#vipShowEliminator")) $("#vipShowEliminator").checked=false;loadVipMembers()}
 });
 showDashboard();

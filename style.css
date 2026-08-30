@@ -1084,3 +1084,11 @@ footer{max-width:1100px;margin:auto;padding:28px 20px 38px;border-top:1px solid 
  .vip-neon .dice-stage{gap:10px!important;min-height:105px!important}.vip-neon .die{width:68px!important;height:68px!important}
  .vip-label{font-size:19px!important}.vip-bottom-row{grid-template-columns:1fr!important}
 }
+
+
+/* Per-member VIP colour eliminator visibility */
+.vip-eliminator-option{display:flex;align-items:center;gap:8px;justify-content:flex-start;margin:10px 0;color:#dfe6ff;font-weight:700;font-size:13px}
+.vip-eliminator-option input{width:auto;margin:0}
+.vip-member-row div{display:flex;flex-direction:column;gap:3px}
+.vip-member-row div small + small{color:#8fffae}
+.vip-eliminator-hidden{display:none!important}

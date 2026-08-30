@@ -21,6 +21,8 @@ async function refreshAccess(){
  }
  currentVip=member;
  document.querySelectorAll("[data-vip-name]").forEach(el=>el.textContent=member.display_name);
+ const colourControls=$(".vip-colour-controls");
+ if(colourControls) colourControls.classList.toggle("vip-eliminator-hidden", member.show_colour_eliminator !== true);
  $("#vipLoginPanel").classList.add("hidden");
  $("#vipArena").classList.remove("hidden");
  return true;
