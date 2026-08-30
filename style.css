@@ -1020,3 +1020,67 @@ footer{max-width:1100px;margin:auto;padding:28px 20px 38px;border-top:1px solid 
 .orange{background:linear-gradient(135deg,#ffb000 0%,#ff7a00 52%,#d94700 100%)!important;color:#ff8a00!important}
 .die.red{box-shadow:inset 7px 7px 18px #fff5,inset -14px -14px 22px #0008,0 9px 0 rgba(0,0,0,.45),0 0 28px rgba(255,45,32,.82)!important}
 .die.orange{box-shadow:inset 7px 7px 18px #fff5,inset -14px -14px 22px #0008,0 9px 0 rgba(0,0,0,.45),0 0 28px rgba(255,138,0,.78)!important}
+
+
+/* ===== RULEBREAKER VIP — CENTERED ARENA / COMPACT FILTER ===== */
+.vip-neon{
+  background:
+    radial-gradient(circle at 50% 18%,rgba(70,18,150,.32),transparent 25%),
+    radial-gradient(circle at 12% 55%,rgba(122,255,0,.11),transparent 24%),
+    radial-gradient(circle at 88% 55%,rgba(164,35,255,.14),transparent 24%),
+    #02050c!important;
+}
+.vip-topbar{height:82px!important;min-height:82px!important;padding:8px 3%!important;gap:16px!important}
+.vip-brand{min-width:210px!important;gap:8px!important}
+.vip-brand .ninja-logo{font-size:43px!important}
+.vip-brand b{font-size:31px!important;letter-spacing:3px!important;color:#8cff00!important;text-shadow:0 0 14px #62ff00!important}
+.vip-brand em{font-size:15px!important;letter-spacing:2px!important;margin-top:5px!important;color:#fff!important}
+.vip-nav{gap:7px!important}
+.vip-nav a{padding:10px 14px!important;border-radius:9px!important;font-size:11px!important;box-shadow:0 0 13px rgba(40,120,255,.22)!important}
+.vip-clock{width:128px!important;padding:7px 9px!important}
+.vip-clock small{font-size:9px!important}.vip-clock strong{font-size:19px!important}
+.vip-page{max-width:900px!important;margin:0 auto!important;padding:22px 18px 45px!important;text-align:center!important}
+.vip-dashboard{display:flex!important;flex-direction:column!important;align-items:center!important;gap:18px!important;position:relative!important}
+.vip-main-column{width:100%!important;max-width:820px!important}
+.vip-verified-card{min-height:150px!important;padding:22px 28px!important;border-color:#b84cff!important;box-shadow:0 0 28px rgba(194,53,255,.20),inset 0 0 35px rgba(64,31,110,.12)!important}
+.vip-room-title{font-size:25px!important}
+.verified-msg{margin:15px 0 10px!important;font-size:16px!important}
+.vip-code{margin:0!important}.vip-code code{font-size:27px!important}
+.vip-dice-card{max-width:820px!important;margin:14px auto 0!important;padding:20px 20px 18px!important;border-color:#9b43ff!important}
+.vip-label{font-size:25px!important;margin-bottom:5px!important}
+.vip-neon .dice-stage{min-height:145px!important;gap:35px!important;padding:12px 10px!important}
+.vip-neon .die{width:118px!important;height:118px!important;border-radius:27%!important}
+.vip-neon #vipRollBtn{margin:3px auto 0!important;padding:14px 48px!important;font-size:21px!important}
+#vipStatus{font-size:14px!important}
+.vip-bottom-row{width:100%!important;grid-template-columns:1fr 1.2fr 1fr!important;gap:12px!important;margin-top:14px!important}
+.vip-status-card,.vip-privacy,.vip-active{min-height:78px!important;padding:12px!important;font-size:13px!important}
+.vip-privacy{font-size:12px!important}.vip-privacy i{width:45px!important;height:26px!important}.vip-privacy i:before{width:22px!important;height:22px!important}.vip-privacy input:checked+i:before{left:21px!important}
+.vip-live-card{width:100%!important;max-width:300px!important;min-height:60px!important;margin:12px auto 0!important;font-size:17px!important}
+.vip-access-granted{margin:12px auto 0;padding:8px 12px 18px;text-align:center}
+.vip-access-granted .access-icon{font-size:31px;color:#bf43ff;text-shadow:0 0 20px #a72fff}
+.vip-access-granted h3{margin:4px 0 5px;color:#b743ff;letter-spacing:1px;font-size:16px;text-shadow:0 0 10px #9b2fff}
+.vip-access-granted p{margin:0;color:#cfd2df;font-size:13px}
+/* Small, discreet colour eliminator: bottom-centred colour-only buttons. */
+#vipArena > .vip-colour-controls{
+  order:3!important;width:auto!important;max-width:none!important;margin:2px auto 0!important;padding:5px 9px!important;border:0!important;background:rgba(4,6,14,.42)!important;box-shadow:none!important;border-radius:20px!important;opacity:.82!important
+}
+#vipArena > .vip-colour-controls .filter-head{display:none!important}
+#vipArena > .vip-colour-controls .colour-toggle-grid{display:flex!important;flex-direction:row!important;justify-content:center!important;gap:7px!important}
+#vipArena > .vip-colour-controls .colour-toggle{width:28px!important;height:28px!important}
+#vipArena > .vip-colour-controls .colour-toggle span{height:28px!important;width:28px!important;padding:0!important;border:1px solid rgba(255,255,255,.22)!important;border-radius:7px!important;background:rgba(8,10,18,.62)!important;display:block!important;font-size:0!important}
+#vipArena > .vip-colour-controls .colour-toggle span i{width:18px!important;height:18px!important;margin:4px!important;border-radius:5px!important;display:block!important;box-shadow:0 0 7px currentColor!important}
+#vipArena > .vip-colour-controls .colour-toggle span b{display:none!important}
+#vipArena > .vip-colour-controls .colour-toggle input:checked+span{opacity:.30!important;filter:grayscale(.55)!important;text-decoration:none!important}
+#vipArena > .vip-colour-controls .vip-reset{display:none!important}
+.vip-logout{right:10px!important;top:4px!important}
+@media(max-width:1100px){
+ .vip-dashboard{display:flex!important}.vip-colour-controls{max-width:none!important;margin:0 auto!important}
+}
+@media(max-width:700px){
+ .vip-topbar{height:auto!important;min-height:70px!important;flex-wrap:wrap!important;justify-content:center!important}
+ .vip-brand{min-width:auto!important}.vip-nav{order:2!important;width:100%!important;justify-content:center!important;flex-wrap:wrap!important}
+ .vip-clock{order:3!important}.vip-logout{position:static!important;margin-top:0!important}
+ .vip-page{padding:14px 10px 30px!important}
+ .vip-neon .dice-stage{gap:10px!important;min-height:105px!important}.vip-neon .die{width:68px!important;height:68px!important}
+ .vip-label{font-size:19px!important}.vip-bottom-row{grid-template-columns:1fr!important}
+}
