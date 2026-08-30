@@ -77,10 +77,12 @@ rollBtn?.addEventListener("click",async()=>{
 });
 
 document.querySelector("#copyBtn")?.addEventListener("click",async()=>{const value=document.querySelector("#code").textContent;if(value==="ROLL TO GENERATE")return;try{await navigator.clipboard.writeText(value);const b=document.querySelector("#copyBtn"),old=b.textContent;b.textContent="COPIED ✓";setTimeout(()=>b.textContent=old,1200)}catch{}});
-document.querySelector("#privacy")?.addEventListener("click",()=>{document.querySelector("#privacy").classList.toggle("on")});
-document.querySelector("#privacy")?.setAttribute("role","button");
-document.querySelector("#privacy")?.setAttribute("tabindex","0");
-document.querySelector("#privacy")?.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" ")document.querySelector("#privacy").click()});
+const privacyBtn=document.querySelector("#privacy");
+privacyBtn?.addEventListener("click",()=>{
+  const on=privacyBtn.classList.toggle("on");
+  privacyBtn.setAttribute("aria-pressed",String(on));
+  privacyBtn.querySelector("b").textContent=on?"PRIVACY BLUR ON":"PRIVACY BLUR";
+});
 
 const channel=db.channel("presence",{config:{presence:{key:crypto.randomUUID()}}});
 channel.on("presence",{event:"sync"},()=>{const count=Object.keys(channel.presenceState()).length;document.querySelector("#activePlayers").textContent=count;document.querySelector("#onlineStat").textContent=count});

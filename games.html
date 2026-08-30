@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0a6cff">
+<title>Ninja Online Dice — Games</title>
+<link rel="stylesheet" href="style.css?v=3">
+</head>
+<body class="ninja-home theme-classic games-page">
+<div class="site-bg" aria-hidden="true"></div>
+<header class="site-header">
+  <a class="brand" href="index.html" aria-label="Ninja Online Dice home"><span class="brand-mark">🥷</span><span><b>NINJA</b><em>ONLINE DICE</em></span></a>
+  <nav class="main-nav" aria-label="Main navigation">
+    <a href="index.html">⌂ <span>HOME</span></a>
+    <a href="index.html#how">? <span>HOW TO PLAY</span></a>
+    <a href="verify.html">✓ <span>VERIFY</span></a>
+    <a href="index.html#stats">▥ <span>STATS</span></a>
+    <a class="active" href="games.html">🎮 <span>GAMES</span></a>
+    <a href="https://discord.gg/GRp7Zuck2" target="_blank" rel="noopener">◉ <span>DISCORD</span></a>
+  </nav>
+</header>
+<main class="games-main">
+  <section class="games-hero">
+    <div class="welcome-pill">✦ NINJA GAME ZONE ✦</div>
+    <h1>PLAY <strong>MORE</strong></h1>
+    <p>Quick, simple games you can play while using Ninja Online Dice.</p>
+  </section>
+  <section class="games-grid">
+    <article class="game-panel panel-card">
+      <div class="game-icon">🪙</div><div class="panel-kicker">GAME 01</div><h2>HEADS OR TAILS</h2><p class="muted">Pick a side, then flip the coin.</p>
+      <div class="coin-wrap"><div id="coin" class="coin"><span>?</span></div></div>
+      <div class="choice-row"><button class="game-choice" data-choice="HEADS">HEADS</button><button class="game-choice" data-choice="TAILS">TAILS</button></div>
+      <button id="flipCoin" class="game-action" type="button">✦ FLIP COIN ✦</button>
+      <div id="coinResult" class="game-result">Choose Heads or Tails.</div>
+    </article>
+    <article class="game-panel panel-card">
+      <div class="game-icon">✊</div><div class="panel-kicker">GAME 02</div><h2>ROCK PAPER SCISSORS</h2><p class="muted">Choose your move and play against Ninja.</p>
+      <div class="rps-display"><span id="playerMove">?</span><b>VS</b><span id="cpuMove">?</span></div>
+      <div class="rps-row"><button data-rps="ROCK">✊ ROCK</button><button data-rps="PAPER">✋ PAPER</button><button data-rps="SCISSORS">✌ SCISSORS</button></div>
+      <div id="rpsResult" class="game-result">Make your move.</div>
+    </article>
+  </section>
+  <section class="game-note panel-card"><span>🎮</span><div><b>MORE GAMES COMING</b><p>More quick games can be added here without changing your dice or verification system.</p></div></section>
+</main>
+<footer><div class="footer-brand">🥷 <b>NINJA ONLINE DICE</b></div><span>© 2026 Ninja Online Dice</span><div><a href="index.html">Home</a><a href="verify.html">Verify</a><a href="https://discord.gg/GRp7Zuck2" target="_blank" rel="noopener">Discord</a></div></footer>
+<script>
+const coin=document.querySelector('#coin'), coinResult=document.querySelector('#coinResult');
+let coinChoice='HEADS';
+document.querySelectorAll('.game-choice').forEach(b=>b.addEventListener('click',()=>{coinChoice=b.dataset.choice;document.querySelectorAll('.game-choice').forEach(x=>x.classList.toggle('selected',x===b));coinResult.textContent=`You picked ${coinChoice}.`; }));
+document.querySelector('#flipCoin').addEventListener('click',()=>{coin.classList.add('flip');setTimeout(()=>{const result=Math.random()<.5?'HEADS':'TAILS';coin.querySelector('span').textContent=result;coin.classList.remove('flip');coinResult.textContent=result===coinChoice?`✓ ${result} — YOU WIN!`:`${result} — Try again!`;},650)});
+const moves=['ROCK','PAPER','SCISSORS']; const emoji={ROCK:'✊',PAPER:'✋',SCISSORS:'✌'};
+function winner(a,b){if(a===b)return 'DRAW';if((a==='ROCK'&&b==='SCISSORS')||(a==='PAPER'&&b==='ROCK')||(a==='SCISSORS'&&b==='PAPER'))return 'WIN';return 'LOSE'}
+document.querySelectorAll('[data-rps]').forEach(b=>b.addEventListener('click',()=>{const p=b.dataset.rps,c=moves[Math.floor(Math.random()*3)],r=winner(p,c);document.querySelector('#playerMove').textContent=emoji[p];document.querySelector('#cpuMove').textContent=emoji[c];document.querySelector('#rpsResult').textContent=r==='DRAW'?`DRAW — both chose ${p}.`:r==='WIN'?`✓ YOU WIN — ${p} beats ${c}!`:`Ninja wins — ${c} beats ${p}.`}));
+</script>
+</body></html>
