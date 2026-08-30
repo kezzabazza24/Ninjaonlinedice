@@ -53,15 +53,16 @@ function renderDice(results, rollingState = false) {
         <div
           class="die ${colour}${rollingState ? " rolling-die" : ""}"
           style="animation-delay:${index * 0.06}s"
-          aria-label="${colour} dice"
-        ></div>
+          aria-label="${colour} dice showing one"
+        >
+          <span class="pip"></span>
+        </div>
       `
     )
     .join("");
 
   stage.dataset.count = results.length;
 }
-
 /* ---------------------------------------------------------
    SOUND
 --------------------------------------------------------- */
