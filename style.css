@@ -652,3 +652,108 @@ button{touch-action:manipulation}
   60%{opacity:1;transform:translateY(-1px)}
   100%{opacity:1;transform:translateY(0)}
 }
+
+
+/* =========================================================
+   NINJA VERIFIED RESULT v1
+   Visual treatment only — verification logic unchanged.
+   ========================================================= */
+
+.verify-result,
+.quick-result{
+  position:relative;
+  overflow:hidden;
+}
+
+.verify-result:before,
+.quick-result:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 0%,rgba(70,230,160,.10),transparent 42%);
+}
+
+.verified-badge{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin:0 auto 12px;
+  padding:9px 13px;
+  border:1px solid rgba(100,255,180,.38);
+  border-radius:999px;
+  background:rgba(50,220,145,.10);
+  color:#9dffd0;
+  font-size:11px;
+  font-weight:1000;
+  letter-spacing:1.3px;
+  box-shadow:0 0 24px rgba(50,220,145,.12);
+}
+
+.verified-badge:before{
+  content:"✓";
+  display:grid;
+  place-items:center;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:rgba(80,240,160,.18);
+}
+
+.verification-code-hero{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:12px auto 16px;
+  max-width:100%;
+}
+.verification-code-hero code{
+  padding:10px 12px;
+  border-radius:10px;
+  background:rgba(0,0,0,.24);
+  border:1px solid rgba(110,210,255,.22);
+  color:#eaf8ff;
+  font-size:clamp(13px,3vw,17px);
+  font-weight:900;
+  letter-spacing:1px;
+  overflow-wrap:anywhere;
+}
+.verification-code-hero button{
+  min-height:42px;
+  padding:9px 12px;
+  border-radius:10px;
+  font-size:9px;
+  font-weight:1000;
+}
+
+@media(max-width:600px){
+  .verified-badge{
+    font-size:9px;
+    padding:8px 11px;
+  }
+  .verification-code-hero{
+    align-items:stretch;
+    flex-direction:column;
+  }
+  .verification-code-hero code{
+    text-align:center;
+  }
+  .verification-code-hero button{
+    width:100%;
+  }
+}
+
+.verification-trust-note{
+  position:relative;
+  margin:10px auto 0;
+  max-width:680px;
+  text-align:center;
+  font-size:9px;
+  line-height:1.5;
+  opacity:.62;
+}
