@@ -119,3 +119,23 @@ document.querySelector("#randomTheme")?.addEventListener("click",()=>setTheme(th
 document.addEventListener("click",async e=>{const btn=e.target.closest(".history-copy");if(!btn)return;try{await navigator.clipboard.writeText(btn.dataset.code);btn.textContent="COPIED";setTimeout(()=>btn.textContent="COPY",1000)}catch{}});
 
 updateDiceChoice();renderDice(Array.from({length:diceCount},()=>secureColour()));renderPersonalRolls();document.querySelector("#sessionRolls").textContent=playCount();loadStats();
+
+
+/* =========================================================
+   LIVE PRESENTATION MODE v1
+   Presentation-only UI toggle. Roll/verification logic unchanged.
+   ========================================================= */
+const liveModeBtn=document.querySelector("#liveModeBtn");
+if(liveModeBtn){
+  const liveKey="ninjaLivePresentation";
+  const setLiveMode=(on)=>{
+    document.body.classList.toggle("live-presentation",on);
+    liveModeBtn.setAttribute("aria-pressed",String(on));
+    liveModeBtn.textContent=on?"◉ EXIT LIVE MODE":"◉ LIVE PRESENTATION MODE";
+    try{localStorage.setItem(liveKey,on?"1":"0")}catch{}
+  };
+  let saved=false;
+  try{saved=localStorage.getItem(liveKey)==="1"}catch{}
+  setLiveMode(saved);
+  liveModeBtn.addEventListener("click",()=>setLiveMode(!document.body.classList.contains("live-presentation")));
+}

@@ -1026,3 +1026,175 @@ body.ninja-home{
 @media(prefers-reduced-motion:reduce){
   .die{transition:none}
 }
+
+
+/* =========================================================
+   NINJA LIVE PRESENTATION MODE v1
+   Presentation-only layer. Backend and verification logic unchanged.
+   ========================================================= */
+
+.live-mode-btn{
+  width:100%;
+  min-height:44px;
+  margin-top:8px;
+  border:1px solid rgba(57,217,255,.22);
+  border-radius:12px;
+  background:rgba(57,217,255,.055);
+  color:#bdeeff;
+  font-size:9px;
+  font-weight:1000;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:transform .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease;
+}
+.live-mode-btn:hover{
+  transform:translateY(-1px);
+  background:rgba(57,217,255,.10);
+  border-color:rgba(57,217,255,.42);
+  box-shadow:0 0 24px rgba(57,217,255,.10);
+}
+.live-mode-btn[aria-pressed="true"]{
+  background:rgba(184,255,53,.09);
+  border-color:rgba(184,255,53,.42);
+  color:#e9ffb8;
+  box-shadow:0 0 28px rgba(184,255,53,.10);
+}
+
+/* Full-screen-like presentation while retaining the same page. */
+body.live-presentation{
+  background:
+    radial-gradient(circle at 50% 25%,rgba(57,217,255,.12),transparent 28%),
+    radial-gradient(circle at 50% 80%,rgba(124,92,255,.09),transparent 30%),
+    #020817;
+}
+body.live-presentation .site-header,
+body.live-presentation .theme-panel,
+body.live-presentation .side-info,
+body.live-presentation .lower-grid,
+body.live-presentation .stats-section,
+body.live-presentation .discord-banner,
+body.live-presentation footer{
+  display:none!important;
+}
+body.live-presentation main{
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px 20px 40px;
+}
+body.live-presentation .dashboard-shell{
+  display:block;
+  min-height:calc(100vh - 64px);
+}
+body.live-presentation .game-area{
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+}
+body.live-presentation .brand-hero{
+  padding:8px 0 24px;
+}
+body.live-presentation .brand-hero h1{
+  font-size:clamp(58px,9vw,105px);
+}
+body.live-presentation .brand-hero strong{
+  font-size:clamp(24px,3vw,34px);
+}
+body.live-presentation .game-card{
+  padding:28px;
+  border-radius:28px;
+}
+body.live-presentation .dice-stage-wrap{
+  min-height:430px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  border-radius:24px;
+}
+body.live-presentation .dice-stage{
+  min-height:310px;
+  gap:18px;
+  align-items:center;
+  justify-content:center;
+}
+body.live-presentation .die{
+  width:clamp(110px,13vw,145px);
+  height:clamp(110px,13vw,145px);
+  border-radius:28px;
+  border-width:3px;
+}
+body.live-presentation .die::before{
+  border-radius:22px;
+}
+body.live-presentation .die::after{
+  width:25%;
+}
+body.live-presentation .roll-main{
+  min-height:68px;
+  font-size:15px;
+  border-radius:18px;
+}
+body.live-presentation .live-mode-btn{
+  max-width:340px;
+  margin:10px auto 0;
+}
+body.live-presentation .verification-strip{
+  margin-top:16px;
+  padding:16px;
+  border-radius:18px;
+}
+body.live-presentation .verification-strip code{
+  font-size:clamp(14px,2vw,19px);
+}
+body.live-presentation .feature-strip{
+  max-width:760px;
+  margin:14px auto 0;
+}
+
+/* A discreet live badge on the presentation view. */
+body.live-presentation .game-card:before{
+  background:
+    radial-gradient(circle at 50% 30%,rgba(57,217,255,.13),transparent 35%),
+    linear-gradient(180deg,rgba(255,255,255,.025),transparent 25%);
+}
+body.live-presentation .welcome-pill{
+  font-size:10px;
+  padding:9px 14px;
+}
+
+@media(max-width:700px){
+  body.live-presentation main{
+    padding:10px 8px 24px;
+  }
+  body.live-presentation .brand-hero{
+    padding-bottom:14px;
+  }
+  body.live-presentation .brand-hero h1{
+    font-size:clamp(48px,18vw,72px);
+  }
+  body.live-presentation .game-card{
+    padding:15px 10px;
+    border-radius:20px;
+  }
+  body.live-presentation .dice-stage-wrap{
+    min-height:330px;
+  }
+  body.live-presentation .dice-stage{
+    min-height:245px;
+    gap:8px;
+  }
+  body.live-presentation .die{
+    width:clamp(62px,18vw,88px);
+    height:clamp(62px,18vw,88px);
+    border-radius:18px;
+  }
+  body.live-presentation .die::before{
+    border-radius:14px;
+  }
+  body.live-presentation .roll-main{
+    min-height:58px;
+    font-size:12px;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .live-mode-btn{transition:none}
+}
