@@ -945,3 +945,84 @@ body.ninja-home{
     animation:none!important;
   }
 }
+
+
+/* =========================================================
+   NINJA 3D DICE v10
+   Visual-only dice treatment. Existing colours and JS unchanged.
+   Each die visibly represents the face "1".
+   ========================================================= */
+
+.die{
+  position:relative;
+  overflow:hidden;
+  border-width:2px;
+  border-radius:clamp(13px,2vw,20px);
+  background-image:
+    linear-gradient(145deg,rgba(255,255,255,.34) 0%,rgba(255,255,255,.08) 25%,rgba(0,0,0,.08) 58%,rgba(0,0,0,.28) 100%);
+  box-shadow:
+    0 14px 0 rgba(0,0,0,.24),
+    0 20px 30px rgba(0,0,0,.22),
+    0 0 22px currentColor,
+    inset 4px 4px 9px rgba(255,255,255,.25),
+    inset -5px -6px 12px rgba(0,0,0,.26);
+}
+
+/* Highlighted top bevel */
+.die::before{
+  content:"";
+  position:absolute;
+  inset:3px;
+  border-radius:calc(clamp(13px,2vw,20px) - 5px);
+  border-top:2px solid rgba(255,255,255,.55);
+  border-left:2px solid rgba(255,255,255,.20);
+  border-right:1px solid rgba(0,0,0,.20);
+  border-bottom:2px solid rgba(0,0,0,.25);
+  pointer-events:none;
+}
+
+/* The central pip: every rendered die is the face "1". */
+.die::after{
+  content:"";
+  position:absolute;
+  width:25%;
+  aspect-ratio:1;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 34% 30%,#fff 0 8%,#f8fbff 22%,#dbe5ef 55%,#aab9c8 100%);
+  box-shadow:
+    0 2px 2px rgba(0,0,0,.30),
+    inset 2px 2px 3px rgba(255,255,255,.9),
+    inset -2px -2px 3px rgba(0,0,0,.24),
+    0 0 12px rgba(255,255,255,.75);
+}
+
+/* Colour-specific glow remains tied to the existing colour classes. */
+.die.red{box-shadow:0 14px 0 rgba(0,0,0,.24),0 20px 30px rgba(0,0,0,.22),0 0 24px #ff2638,inset 4px 4px 9px rgba(255,255,255,.25),inset -5px -6px 12px rgba(0,0,0,.26)}
+.die.blue{box-shadow:0 14px 0 rgba(0,0,0,.24),0 20px 30px rgba(0,0,0,.22),0 0 24px #1977ff,inset 4px 4px 9px rgba(255,255,255,.25),inset -5px -6px 12px rgba(0,0,0,.26)}
+.die.green{box-shadow:0 14px 0 rgba(0,0,0,.24),0 20px 30px rgba(0,0,0,.22),0 0 24px #62e600,inset 4px 4px 9px rgba(255,255,255,.25),inset -5px -6px 12px rgba(0,0,0,.26)}
+.die.yellow{box-shadow:0 14px 0 rgba(0,0,0,.24),0 20px 30px rgba(0,0,0,.22),0 0 24px #ffd21a,inset 4px 4px 9px rgba(255,255,255,.25),inset -5px -6px 12px rgba(0,0,0,.26)}
+.die.orange{box-shadow:0 14px 0 rgba(0,0,0,.24),0 20px 30px rgba(0,0,0,.22),0 0 24px #ff7a00,inset 4px 4px 9px rgba(255,255,255,.25),inset -5px -6px 12px rgba(0,0,0,.26)}
+.die.purple{box-shadow:0 14px 0 rgba(0,0,0,.24),0 20px 30px rgba(0,0,0,.22),0 0 24px #8d5cff,inset 4px 4px 9px rgba(255,255,255,.25),inset -5px -6px 12px rgba(0,0,0,.26)}
+
+#diceStage.is-rolling .die{
+  box-shadow:0 9px 0 rgba(0,0,0,.22),0 15px 28px rgba(0,0,0,.20),0 0 30px currentColor,inset 4px 4px 9px rgba(255,255,255,.25),inset -5px -6px 12px rgba(0,0,0,.26);
+}
+
+@media(max-width:600px){
+  .die{
+    box-shadow:
+      0 9px 0 rgba(0,0,0,.24),
+      0 15px 23px rgba(0,0,0,.20),
+      0 0 18px currentColor,
+      inset 3px 3px 7px rgba(255,255,255,.25),
+      inset -4px -5px 9px rgba(0,0,0,.26);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .die{transition:none}
+}
