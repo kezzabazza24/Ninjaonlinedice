@@ -587,3 +587,68 @@ button{touch-action:manipulation}
     transition-duration:.01ms!important;
   }
 }
+
+
+/* =========================================================
+   NINJA ROLL REVEAL v1
+   Presentation-only animation. Backend/result logic unchanged.
+   ========================================================= */
+
+#diceStage.is-rolling .die {
+  animation:
+    ninjaDieTumble .42s cubic-bezier(.2,.75,.25,1) infinite alternate,
+    ninjaDieGlow .8s ease-in-out infinite alternate;
+  will-change: transform, filter;
+}
+
+#diceStage.is-rolling .die .pip,
+#diceStage.is-rolling .die::after {
+  opacity:.92;
+}
+
+@keyframes ninjaDieTumble {
+  0%   { transform:translateY(0) rotate(-7deg) scale(.96); }
+  50%  { transform:translateY(-9px) rotate(8deg) scale(1.02); }
+  100% { transform:translateY(2px) rotate(-5deg) scale(.98); }
+}
+
+@keyframes ninjaDieGlow {
+  from { filter:brightness(1); }
+  to   { filter:brightness(1.25) drop-shadow(0 0 12px rgba(67,216,255,.42)); }
+}
+
+/* Final reveal: a short settle and glow after the roll */
+#diceStage:not(.is-rolling) .die {
+  animation:ninjaDieReveal .38s cubic-bezier(.17,.84,.35,1) both;
+}
+
+@keyframes ninjaDieReveal {
+  0%   { opacity:.65; transform:translateY(-10px) scale(.9) rotate(-4deg); }
+  65%  { opacity:1; transform:translateY(2px) scale(1.05) rotate(1deg); }
+  100% { opacity:1; transform:translateY(-2px) scale(1) rotate(0); }
+}
+
+/* Verified status feels more deliberate without changing its text */
+.roll-status:empty { min-height:0; }
+.roll-status:not(:empty) {
+  min-height:22px;
+  font-weight:800;
+}
+
+/* Respect reduced-motion preferences */
+@media(prefers-reduced-motion:reduce){
+  #diceStage.is-rolling .die,
+  #diceStage:not(.is-rolling) .die {
+    animation:none!important;
+  }
+}
+
+
+.roll-success-pulse{
+  animation:ninjaStatusPulse .55s ease-out both;
+}
+@keyframes ninjaStatusPulse{
+  0%{opacity:.4;transform:translateY(3px)}
+  60%{opacity:1;transform:translateY(-1px)}
+  100%{opacity:1;transform:translateY(0)}
+}

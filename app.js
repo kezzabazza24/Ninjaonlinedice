@@ -78,6 +78,9 @@ rollBtn?.addEventListener("click",async()=>{
     savePersonalRoll(data);
   }
   document.querySelector("#rollStatus").textContent=error||!saved?"Roll completed, but the verified result could not be saved.":"✓ Roll complete and saved as a verified result.";
+  const statusEl=document.querySelector("#rollStatus");
+  statusEl?.classList.remove("roll-success-pulse");
+  if(saved){requestAnimationFrame(()=>statusEl?.classList.add("roll-success-pulse"));}
   document.querySelector("#sessionRolls").textContent=playCount();
   rollBtn.disabled=false;rollBtn.textContent=`✦ ROLL ${diceCount} DICE ✦`;rolling=false;renderPersonalRolls();loadStats();
 });
