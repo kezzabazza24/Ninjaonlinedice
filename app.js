@@ -139,3 +139,23 @@ if(liveModeBtn){
   setLiveMode(saved);
   liveModeBtn.addEventListener("click",()=>setLiveMode(!document.body.classList.contains("live-presentation")));
 }
+
+
+/* =========================================================
+   TIKTOK LIVE MODE v1
+   Presentation-only UI toggle. Roll/verification logic unchanged.
+   ========================================================= */
+const tiktokModeBtn=document.querySelector("#tiktokModeBtn");
+if(tiktokModeBtn){
+  const tiktokKey="ninjaTikTokLiveMode";
+  const setTikTokMode=(on)=>{
+    document.body.classList.toggle("tiktok-live-mode",on);
+    tiktokModeBtn.setAttribute("aria-pressed",String(on));
+    tiktokModeBtn.textContent=on?"● EXIT TIKTOK LIVE":"● TIKTOK LIVE MODE";
+    try{localStorage.setItem(tiktokKey,on?"1":"0")}catch{}
+  };
+  let saved=false;
+  try{saved=localStorage.getItem(tiktokKey)==="1"}catch{}
+  setTikTokMode(saved);
+  tiktokModeBtn.addEventListener("click",()=>setTikTokMode(!document.body.classList.contains("tiktok-live-mode")));
+}

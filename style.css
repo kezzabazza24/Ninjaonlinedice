@@ -1198,3 +1198,207 @@ body.live-presentation .welcome-pill{
 @media(prefers-reduced-motion:reduce){
   .live-mode-btn{transition:none}
 }
+
+
+/* =========================================================
+   NINJA TIKTOK LIVE MODE v1
+   Presentation-only layer. Backend and verification unchanged.
+   ========================================================= */
+
+.tiktok-mode-btn{
+  width:100%;
+  min-height:44px;
+  margin-top:8px;
+  border:1px solid rgba(255,70,90,.28);
+  border-radius:12px;
+  background:rgba(255,70,90,.055);
+  color:#ffd7dd;
+  font-size:9px;
+  font-weight:1000;
+  letter-spacing:1px;
+  cursor:pointer;
+  transition:transform .16s ease,background .16s ease,border-color .16s ease,box-shadow .16s ease;
+}
+.tiktok-mode-btn:hover{
+  transform:translateY(-1px);
+  background:rgba(255,70,90,.10);
+  border-color:rgba(255,100,120,.48);
+  box-shadow:0 0 24px rgba(255,70,90,.10);
+}
+.tiktok-mode-btn[aria-pressed="true"]{
+  background:rgba(255,70,90,.12);
+  border-color:rgba(255,100,120,.58);
+  color:#fff;
+  box-shadow:0 0 30px rgba(255,70,90,.13);
+}
+
+body.tiktok-live-mode{
+  background:
+    radial-gradient(circle at 50% 20%,rgba(57,217,255,.14),transparent 28%),
+    radial-gradient(circle at 50% 80%,rgba(124,92,255,.12),transparent 30%),
+    #010610;
+}
+body.tiktok-live-mode .site-header,
+body.tiktok-live-mode .theme-panel,
+body.tiktok-live-mode .side-info,
+body.tiktok-live-mode .lower-grid,
+body.tiktok-live-mode .stats-section,
+body.tiktok-live-mode .discord-banner,
+body.tiktok-live-mode footer{
+  display:none!important;
+}
+body.tiktok-live-mode main{
+  max-width:980px;
+  margin:0 auto;
+  padding:14px 14px 28px;
+}
+body.tiktok-live-mode .dashboard-shell{
+  display:block;
+  min-height:calc(100vh - 42px);
+}
+body.tiktok-live-mode .game-area{
+  width:100%;
+  max-width:900px;
+  margin:0 auto;
+}
+body.tiktok-live-mode .welcome-pill{
+  display:inline-flex;
+  margin-bottom:4px;
+  border-color:rgba(255,70,90,.30);
+  box-shadow:0 0 28px rgba(255,70,90,.10);
+}
+body.tiktok-live-mode .brand-hero{
+  padding:4px 0 13px;
+}
+body.tiktok-live-mode .brand-hero h1{
+  font-size:clamp(54px,9vw,96px);
+}
+body.tiktok-live-mode .brand-hero strong{
+  font-size:clamp(23px,3vw,32px);
+}
+body.tiktok-live-mode .brand-hero p{
+  font-size:11px;
+  opacity:.72;
+}
+body.tiktok-live-mode .game-card{
+  padding:22px;
+  border-radius:25px;
+  border-color:rgba(57,217,255,.24);
+}
+body.tiktok-live-mode .game-card-head{
+  justify-content:center;
+  text-align:center;
+}
+body.tiktok-live-mode .game-card-head .live-badge{
+  position:absolute;
+  top:20px;
+  right:20px;
+}
+body.tiktok-live-mode .dice-count-label,
+body.tiktok-live-mode .dice-count{
+  opacity:.85;
+}
+body.tiktok-live-mode .dice-stage-wrap{
+  min-height:390px;
+  border-radius:22px;
+}
+body.tiktok-live-mode .dice-stage{
+  min-height:285px;
+  gap:16px;
+  justify-content:center;
+  align-items:center;
+}
+body.tiktok-live-mode .die{
+  width:clamp(105px,13vw,142px);
+  height:clamp(105px,13vw,142px);
+  border-radius:27px;
+  border-width:3px;
+}
+body.tiktok-live-mode .roll-main{
+  min-height:68px;
+  font-size:15px;
+  border-radius:18px;
+}
+body.tiktok-live-mode .verification-strip{
+  margin-top:13px;
+  padding:15px;
+  border-radius:16px;
+}
+body.tiktok-live-mode .verification-strip code{
+  font-size:clamp(14px,2vw,19px);
+}
+body.tiktok-live-mode .feature-strip{
+  max-width:720px;
+  margin:11px auto 0;
+}
+body.tiktok-live-mode .feature-strip>div:nth-child(n+3){
+  display:none;
+}
+body.tiktok-live-mode .feature-strip>div{
+  min-height:64px;
+}
+body.tiktok-live-mode .live-mode-btn{
+  display:none;
+}
+body.tiktok-live-mode .tiktok-mode-btn{
+  max-width:260px;
+  margin:8px auto 0;
+}
+
+/* Make the verified status easy to read on a stream. */
+body.tiktok-live-mode .roll-status{
+  font-size:12px;
+  font-weight:1000;
+  letter-spacing:.2px;
+}
+
+@media(max-width:600px){
+  body.tiktok-live-mode main{
+    padding:7px 7px 18px;
+  }
+  body.tiktok-live-mode .brand-hero{
+    padding-bottom:8px;
+  }
+  body.tiktok-live-mode .brand-hero h1{
+    font-size:clamp(44px,17vw,68px);
+  }
+  body.tiktok-live-mode .brand-hero strong{
+    font-size:21px;
+  }
+  body.tiktok-live-mode .game-card{
+    padding:12px 9px;
+    border-radius:18px;
+  }
+  body.tiktok-live-mode .game-card-head h2{
+    font-size:17px;
+  }
+  body.tiktok-live-mode .game-card-head .live-badge{
+    top:12px;
+    right:10px;
+  }
+  body.tiktok-live-mode .dice-stage-wrap{
+    min-height:300px;
+  }
+  body.tiktok-live-mode .dice-stage{
+    min-height:220px;
+    gap:7px;
+  }
+  body.tiktok-live-mode .die{
+    width:clamp(59px,17vw,82px);
+    height:clamp(59px,17vw,82px);
+    border-radius:16px;
+  }
+  body.tiktok-live-mode .roll-main{
+    min-height:57px;
+    font-size:11px;
+  }
+  body.tiktok-live-mode .verification-strip{
+    padding:11px;
+  }
+  body.tiktok-live-mode .feature-strip{
+    grid-template-columns:1fr 1fr;
+  }
+}
+@media(prefers-reduced-motion:reduce){
+  .tiktok-mode-btn{transition:none}
+}
